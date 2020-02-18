@@ -1,0 +1,64 @@
+\documentclass[12pt,a4paper]{TP}
+%\usepackage[postscript]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage[frenchb]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{relsize}
+\usepackage{fp} % 16/01/2014 : passage à fp pour le calcul des points
+\usepackage{amssymb}
+\usepackage{wasysym} %smiley
+\usepackage{fancyhdr}% en têtes
+%\usepackage{textcomp}
+\usepackage{intcalc} % integer computation
+\usepackage{amsthm} %numéroter les questions
+%\usepackage{amsmath}
+\usepackage{mathastext} % math as standfard text : units are respecting typography conventions.
+\usepackage{datetime}
+\usepackage{xspace} % typographie IN
+\usepackage{hyperref}% hyperliens
+\usepackage[all]{hypcap} %lien pointe en haut des figures
+%\usepackage{datenumber}
+\usepackage{totcount} %faire le total des points des questions
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{babel}
+\usepackage[]{circuitikz}
+\usepackage{varioref}
+%\input cyracc.def
+%\usepackage{gnuplottex}
+\usepackage{ifthen}
+\usepackage{todonotes}
+\usepackage{multicol}
+
+\pdfinfo{
+/Author (Raoul Sommeillier -- BEAMS)
+/Title (ELEC-H-201, 18 février 2019)
+/ModDate (D:\pdfdate)
+}
+\hypersetup{
+pdftitle={ELEC-H-201 Électricité et électronique},
+pdfauthor={Raoul Sommeillier ULB ©2019 ULB - BEAMS  },
+pdfsubject={Exam}
+}
+
+\langexam{frenchb}
+%\correction{true}
+%\correction{false}
+\commentaires{false}
+
+\newboolean{koriG}
+\ifx\koriG\undefined
+\correction{false}
+\else
+\correction{true}
+\fi
+
+\author{Raoul Sommeillier}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEBUT DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\frontpage{1b.tex}
+\end{document}
