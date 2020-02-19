@@ -91,7 +91,7 @@
 {
     \lhead{#1 \\ #2}
     \chead{\ifthenelse{\boolean{corrige}}{Corrig\'e}{} \ifthenelse{\boolean{assistant}}{pour les assistants}{}}
-    \rhead{page : \thepage\\v1.1.4}
+    \rhead{page : \thepage\\v1.1.5}
     %\rhead{\longdate\displaydate{date}\\page : \thepage}
     \cfoot{}
     \pdfinfo{
@@ -231,9 +231,9 @@
             %{\strut\par}
             {\rule{0pt}{-1cm-\parskip}\par}
         }
-        
-        
-        
+
+
+
 % 		\ifthenelse {\boolean{corrige}}
 %         {
 %             #2\par
@@ -257,7 +257,7 @@
 %             %{\strut\par}
 %             {\rule{0pt}{1cm-\parskip}\par}
 %         }
-        
+
 		%\ifthenelse{#2>0}
         \FPifgt{#1}{0}{}
 % 		{%
