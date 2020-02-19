@@ -1,5 +1,5 @@
 \toptitle{[ELEC-H-201] Électricité et électronique}{TP1a}
-\TPtitle{Électricité et électronique\vspace*{2mm}}{TP1a:\vspace*{2mm} 
+\TPtitle{Électricité et électronique\vspace*{2mm}}{TP1a:\vspace*{2mm}
 Circuits résistifs avec sources de tension continue}
 
 \frontpage{consignes1a.tex}
@@ -11,14 +11,14 @@ Circuits résistifs avec sources de tension continue}
 Soit le circuit ci-dessous:
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1, l=$E$, i_>=$I$] 	(0,4)--(2,4)--(2,6)
+(0,0)   to[battery1, l=$E$, i_>=$I$, invert] 	(0,4)--(2,4)--(2,6)
 (2,4)   to[R, l=$R_4$, i=$I_2$, v<=$V_2$](7,4)--(8,4)
 (2,6)   to[R, l=$R_3$, i=$I_1$]			(7,6)--(7,4)
 (8,4)   to[R, l_=$R_1$]					(8,2)
-		to[R, l_=$R_2$]					(8,0)--(0,0)		
+		to[R, l_=$R_2$]					(8,0)--(0,0)
 node[] (A) at (3.5,6) {}
 node[] (B) at (5.5,6) {}
-(A) to [open, v<=$V_1$] (B)		
+(A) to [open, v<=$V_1$] (B)
 node[] (C) at (8.5,5.5) {}
 node[] (D) at (8.5,-1.5) {}
 (C) to [open, v^<=$V_3$] (D)
@@ -27,7 +27,7 @@ node[] (D) at (8.5,-1.5) {}
 \end{center}
 
 Avec $R_1=R_2=R$, $R_3=2R$ et $R_4=100R$ où $R$ est une valeur de résistance quelconque (différente de $0$)
-	
+
 \vspace{10pt}
 
 \Question{0}
@@ -41,8 +41,8 @@ Avec $R_1=R_2=R$, $R_3=2R$ et $R_4=100R$ où $R$ est une valeur de résistance q
 }
 {%correction
 \begin{itemize}
-\item Les réponses correctes sont: \textbf{$V_2 = V_1$}, 
-\textbf{$V_2 < V_3$}, \textbf{$I_1 > I_2$}, et 
+\item Les réponses correctes sont: \textbf{$V_2 = V_1$},
+\textbf{$V_2 < V_3$}, \textbf{$I_1 > I_2$}, et
 \textbf{$I > I_2$}.
 
 \item Le but de cet exercice est de vous permettre de vérifier si votre intuition est un bon guide... ou vous induit plutôt en erreur (et sur quoi précisément). Il est donc important d'essayer de trouver les réponses sans résoudre explicitement le circuit, et de comparer avec la résolution ensuite.
@@ -59,7 +59,7 @@ Avec $R_1=R_2=R$, $R_3=2R$ et $R_4=100R$ où $R$ est une valeur de résistance q
 % 15min\\
 % Exercice prioritaire\\
 % Cet exercice utilise la méthode prédiction-calculs-interprétations des résultats et comparaison des résultats obtenus avec les prédictions.\\
-% On s’attend à ce que l’étudiant pense que le fait d’avoir une grande résistance $R_4$ diminue fortement le courant délivré par la source, négligeant l’influence de $R_3$ de faible valeur par rapport à $R_4$. La notion d’équipotentielle est abordée (via $V_2=V_3$ mais dont la longueur des flèches peut induire l’étudiant en erreur) et la connaissance « qualitative » de la loi des nœuds est vérifiée.  
+% On s’attend à ce que l’étudiant pense que le fait d’avoir une grande résistance $R_4$ diminue fortement le courant délivré par la source, négligeant l’influence de $R_3$ de faible valeur par rapport à $R_4$. La notion d’équipotentielle est abordée (via $V_2=V_3$ mais dont la longueur des flèches peut induire l’étudiant en erreur) et la connaissance « qualitative » de la loi des nœuds est vérifiée.
 % }
 
 
@@ -102,7 +102,7 @@ La présence de grandes résistances dans un circuit n'est pas synonyme d'un pet
 % {\color{blue} Exercice prioritaire \\ Timing: 10min \\
 % Le but est de déstabiliser l’étudiant avec une configuration de fils peu commune. Il doit, seul, pouvoir identifier la configuration simple des deux circuits (mise en parallèle). La notion d’équipotentielle des fils est exploitée. L’exercice exploite la méthode prédiction-calculs-interprétations des résultats et comparaison des résultats obtenus avec les prédictions.\\ \color{black}}{}
 Considérer les deux circuits suivants:
-%\begin{multicols*}{2} 
+%\begin{multicols*}{2}
 \begin{center}
 \begin{circuitikz} \draw
 (0,0)   -- (0,3) -- (1,3)
@@ -111,13 +111,13 @@ Considérer les deux circuits suivants:
 (1,2)   to[R, l=$R$] (5,4)
 (1,4)   to[R, *-*, l=$R$] (5,4)--(5,2)
 (5,3)--(6,3)--(6,0)
-		to[battery1, l=$E$, i_>=$I_a$] (0,0)
+		to[battery1, l=$E$, i_>=$I_a$, invert] (0,0)
 (3,5.5) node[]{Circuit a}
 ;
 \end{circuitikz}
 \hspace{1cm}
 %\end{center}
-%\newpage 
+%\newpage
 %\begin{center}
 \begin{circuitikz} \draw
 (0,0)   -- (0,3) -- (1,3)
@@ -127,7 +127,7 @@ Considérer les deux circuits suivants:
 (1,4)   to[R, *-*, l=$R$] (5,4)--(5,2)
 (1,4)   to[R, l=$R$] (3,3)--(5,2)
 (5,3)--(6,3)--(6,0)
-		to[battery1, l=$E$, i_>=$I_b$] (0,0)
+		to[battery1, l=$E$, i_>=$I_b$, invert] (0,0)
 (3,5.5) node[]{Circuit b}
 ;
 \end{circuitikz}
@@ -160,13 +160,13 @@ Simplifier le circuit: les schémas $a$ et $b$ de départ son d'une configuratio
 (1,3)   to[R, *-*, l=$R$] (5,3)
 (1,4)   to[R, *-*, l=$R$] (5,4)--(5,2)
 (5,3)--(6,3)--(6,0)
-		to[battery1, l=$E$, i_>=$I_a$] (0,0)
+		to[battery1, l=$E$, i_>=$I_a$, invert] (0,0)
 (3,5.5) node[]{Circuit a}
 ;
 \end{circuitikz}
 \hspace{1cm}
 %\end{center}
-%\newpage 
+%\newpage
 %\begin{center}
 \begin{circuitikz} \draw
 (0,0)   -- (0,3) -- (1,3)
@@ -176,7 +176,7 @@ Simplifier le circuit: les schémas $a$ et $b$ de départ son d'une configuratio
 (1,4)   to[R, *-*, l=$R$] (5,4)--(5,2)
 (1,2.5)   to[R, *-*, l=$R$] (5,2.5)
 (5,3)--(6,3)--(6,0)
-		to[battery1, l=$E$, i_>=$I_b$] (0,0)
+		to[battery1, l=$E$, i_>=$I_b$, invert] (0,0)
 (3,5.5) node[]{Circuit b}
 ;
 \end{circuitikz}
@@ -213,7 +213,7 @@ Pour le circuit ci-dessous:
 (1,2)   -- (1,4)
 (1,2)   to[R, *-*, l=$R_3$] (3,2) to[R, *-*, l=$R_4$] (5,2)
 (1,4)   to[R, *-*, l=$R_1$] (3,4) to[R, *-*, l=$R_2$] (5,4)--(5,2)
-(5,3)--(6,3)--(6,0)to[battery1, l=$E$, i_>=$I$] (0,0)
+(5,3)--(6,3)--(6,0)to[battery1, l=$E$, i_>=$I$, invert] (0,0)
 (3,2)--(3,4)
 (3.3,3) node[]{(1)}
 ;
@@ -227,7 +227,7 @@ La connexion verticale (1) est une équipotentielle et ne peut donc pas être pa
 (1,2)   -- (1,4)
 (1,2)   to[R, *-*, l=$R_3$] (3,2) to[R, *-*, l=$R_4$] (5,2)
 (1,4)   to[R, *-*, l=$R_1$] (3,4) to[R, *-*, l=$R_2$] (5,4)--(5,2)
-(5,3)--(6,3)--(6,0)to[battery1, l=$E$, i_>=$I$] (0,0)
+(5,3)--(6,3)--(6,0)to[battery1, l=$E$, i_>=$I$, invert] (0,0)
 ;
 \end{circuitikz}
 \end{center}
@@ -265,7 +265,7 @@ La notion de résistance équivalente série et parallèle est utile pour simpli
 Dans le circuit suivant, où toutes les sources sont égales à $E$ et toutes les résistances à $R$,
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1] (0,2) to[battery1] (0,4) to[battery1] (0,6)--(2,6)--(2,4)
+(0,0)   to[battery1, invert] (0,2) to[battery1, invert] (0,4) to[battery1, invert] (0,6)--(2,6)--(2,4)
 (0,0)--(2,0)to[R] (2,4)to[R] (4,4) to[R](6,4)
 (2,0)to[R](4,0)to[R](4,4)
 (2,6)to[R](6,6)--(6,4)to[R](8,4)to[R](10,4)to[R](12,4)
@@ -282,7 +282,7 @@ Dans le circuit suivant, où toutes les sources sont égales à $E$ et toutes le
 Les résistances encadrées sont en série, et celles entourées sont en parallèle:
 \begin{center}
 \begin{circuitikz}[scale=0.8] \draw
-(0,0)   to[battery1] (0,2) to[battery1] (0,4) to[battery1] (0,6)--(2,6)--(2,4)
+(0,0)   to[battery1, invert] (0,2) to[battery1, invert] (0,4) to[battery1, invert] (0,6)--(2,6)--(2,4)
 (0,0)--(2,0)to[R] (2,4)to[R] (4,4) to[R](6,4)
 (2,0)to[R](4,0)to[R](4,4)
 (2,6)to[R](6,6)--(6,4)to[R](8,4)to[R](10,4)to[R](12,4)
@@ -298,7 +298,7 @@ Les résistances encadrées sont en série, et celles entourées sont en parall�
 Il en résulte le schéma suivant, où 4 résistances sont encore en série et où la source de tension équivalente a été calculée (trois fois la même source de tension en série):
 \begin{center}
 \begin{circuitikz}[scale=0.8] \draw
-(0,0)   to[battery1, l=$3E$](0,6)--(2,6)--(2,4)
+(0,0)   to[battery1, l=$3E$, invert](0,6)--(2,6)--(2,4)
 (0,0)--(2,0)to[R] (2,4)to[R] (4,4) to[R](6,4)
 (2,0)to[R](4,0)to[R](4,4)
 (2,6)to[R](6,6)--(6,4)to[R, l=$R/2$](8,4)to[R, l=$2R$](12,4)
@@ -310,7 +310,7 @@ Il en résulte le schéma suivant, où 4 résistances sont encore en série et o
 Ce schéma peut alors encore être simplifié étant donné la présence de 4 résistances en série encadrées. Il en résulte le schéma suivant:
 \begin{center}
 \begin{circuitikz}[scale=0.8] \draw
-(0,0)   to[battery1, l=$3E$](0,6)--(2,6)--(2,4)
+(0,0)   to[battery1, l=$3E$, invert](0,6)--(2,6)--(2,4)
 (0,0)--(2,0)to[R] (2,4)to[R] (4,4) to[R](6,4)
 (2,0)to[R](4,0)to[R](4,4)
 (2,6)to[R](6,6)--(6,4)to[R, l=$5R$](6,0)--(4,0)
@@ -328,7 +328,7 @@ Ce schéma peut alors encore être simplifié étant donné la présence de 4 r�
 % \textit{Il est impossible de réduire le schéma précédent à celui-ci:}
 % \begin{center}
 % \begin{circuitikz} \draw
-% (0,0)   to[battery1, l=$E_{totale_{equivalente}}$] (0,3)--(2,3)
+% (0,0)   to[battery1, l=$E_{totale_{equivalente}}$, invert] (0,3)--(2,3)
 % (0,0)--(2,0) to[R, l_=$R_{totale_{equivalente}}$] (2,3)
 % ;
 % \end{circuitikz}
@@ -339,7 +339,7 @@ Ce schéma peut alors encore être simplifié étant donné la présence de 4 r�
 \textit{"Il est impossible de réduire le schéma précédent à celui-ci:"}
 \begin{center}
 \begin{circuitikz}[scale=0.8] \draw
-(0,0)   to[battery1, l=$E_{tot}$](0,2)--(2,2)
+(0,0)   to[battery1, l=$E_{tot}$, invert](0,2)--(2,2)
 to[R,l=$R_{tot}$] (2,0)--(0,0)
 ;
 \end{circuitikz}
@@ -358,8 +358,8 @@ Dans le dernier schéma redessiné, il reste des résistances qui ne sont ni en 
 Pour le schéma suivant, avec $R=100 \Omega$, $E_1=100V$ et $E_2=50V$,
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1, v=$E_1$, i_>=$I$] (0,3)--(1,3)to[R, l=$R$, v=$V_R$](3,3)--(4,3)
-(0,0)--(4,0) to[battery1, v_=$E_2$] (4,3)
+(0,0)   to[battery1, v=$E_1$, i_>=$I$, invert] (0,3)--(1,3)to[R, l=$R$, v=$V_R$](3,3)--(4,3)
+(0,0)--(4,0) to[battery1, v_=$E_2$, invert] (4,3)
 ;
 \end{circuitikz}
 \end{center}
@@ -371,8 +371,8 @@ Etant donné que cette puissance est négative, nous en déduisons que $E_1$ agi
 Cependant, selon le circuit suivant :
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1, v=$E_1$, i_>=$I$] (0,3)--(1,3)to[R, l=$R$, v<=$V_R$](3,3)--(4,3)
-(0,0)--(4,0) to[battery1, v_=$E_2$] (4,3)
+(0,0)   to[battery1, v=$E_1$, i_>=$I$, invert] (0,3)--(1,3)to[R, l=$R$, v<=$V_R$](3,3)--(4,3)
+(0,0)--(4,0) to[battery1, v_=$E_2$, invert] (4,3)
 ;
 \end{circuitikz}
 \end{center}
@@ -401,10 +401,10 @@ En effet: pour une résistance, en écrivant la loi constitutive, si la tension 
 Soit le circuit suivant:
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1, v=$10V$] (0,2)to[R, l=$3\Omega$](4,5)to[battery1,v=$20V$](10,5)
-(0,0)--(10,0)to[battery1,v=$5V$](10,2)to[R,l=$3\Omega$](10,4)--(10,5)
+(0,0)   to[battery1, v=$10V$, invert] (0,2)to[R, l=$3\Omega$](4,5)to[battery1,v=$20V$, invert](10,5)
+(0,0)--(10,0)to[battery1,v=$5V$, invert](10,2)to[R,l=$3\Omega$](10,4)--(10,5)
 (0,2) to[R,l=$3\Omega$](6,3)to[R,l=$3\Omega$](10,4)
-(6,0)to[R,l=$3\Omega$](6,1.5)to[battery1,v=$30V$](6,3)
+(6,0)to[R,l=$3\Omega$](6,1.5)to[battery1,v=$30V$, invert](6,3)
 ;
 \end{circuitikz}
 \vspace{1cm}
@@ -417,21 +417,21 @@ Soit le circuit suivant:
 Simplifiez d'abord le circuit visuellement parlant. On arrive au schéma de gauche:
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)--(0,2)   to[battery1, v=$10V$] (0,4)to[R, l=$3\Omega$](2,4)
-(2,0)to[R, l=$3\Omega$](2,2)   to[battery1, v=$30V$] (2,4)to[R, l=$3\Omega$](4,4)
-(4,0)to[R, l=$3\Omega$](4,2)   to[battery1, v=$5V$] (4,4)--(4,6)
+(0,0)--(0,2)   to[battery1, v=$10V$, invert] (0,4)to[R, l=$3\Omega$](2,4)
+(2,0)to[R, l=$3\Omega$](2,2)   to[battery1, v=$30V$, invert] (2,4)to[R, l=$3\Omega$](4,4)
+(4,0)to[R, l=$3\Omega$](4,2)   to[battery1, v=$5V$, invert] (4,4)--(4,6)
 (0,0)--(4,0)
-(0,4)--(0,6)to[R, l=$3\Omega$](2,6)   to[battery1, v=$20V$] (4,6)
+(0,4)--(0,6)to[R, l=$3\Omega$](2,6)   to[battery1, v=$20V$, invert] (4,6)
 ;
 \end{circuitikz}
 %\end{center}
 %\begin{center}
 \begin{circuitikz} \draw
-(0,0)--(0,2)   to[battery1, v=$E_1$, i>=$I_1$] (0,4)to[R, v<=$V_{R_5}$, i=$I_5$](2,4)
-(2,0)to[R, v<=$V_{R_2}$](2,2)   to[battery1, v=$E_2$, i>=$I_2$] (2,4)to[R, v<=$V_{R_6}$, i=$I_6$](4,4)
-(4,0)to[R, v<=$V_{R_5}$](4,2)   to[battery1, v=$E_3$, i>=$I_3$] (4,4)--(4,6)
+(0,0)--(0,2)   to[battery1, v=$E_1$, i>=$I_1$, invert] (0,4)to[R, v<=$V_{R_5}$, i=$I_5$](2,4)
+(2,0)to[R, v<=$V_{R_2}$](2,2)   to[battery1, v=$E_2$, i>=$I_2$, invert] (2,4)to[R, v<=$V_{R_6}$, i=$I_6$](4,4)
+(4,0)to[R, v<=$V_{R_5}$](4,2)   to[battery1, v=$E_3$, i>=$I_3$, invert] (4,4)--(4,6)
 (0,0)--(4,0)
-(0,4)--(0,6)to[R, v<=$V_{R_4}$, i=$I_4$](2,6)   to[battery1, v=$E_4$] (4,6)
+(0,4)--(0,6)to[R, v<=$V_{R_4}$, i=$I_4$](2,6)   to[battery1, v=$E_4$, invert] (4,6)
 ;
 \end{circuitikz}
 \end{center}
@@ -491,9 +491,9 @@ Cfr slides du cours
 Soit le circuit suivant où toutes les sources sont égales à $10V$ et toutes les résistances à $10\Omega$:
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1] (0,4)to[R](4,4)--(8,4)--(8,3)
+(0,0)   to[battery1, invert] (0,4)to[R](4,4)--(8,4)--(8,3)
 (0,0)--(8,0)--(8,1)
-(4,4) to[battery1](4,2)to[R](4,0)
+(4,4) to[battery1, invert](4,2)to[R](4,0)
 (7,3)--(9,3)
 (7,1)--(9,1)
 (7,1)to[R](7,3)
@@ -508,9 +508,9 @@ Soit le circuit suivant où toutes les sources sont égales à $10V$ et toutes l
 {%Corrigé
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1, v=$E_1$, i_>=$I_1$] (0,4)to[R, l=$R_1$,v<=$V_{R_1}$](4,4)to[short, i=$I_3$](8,4)--(8,3)
+(0,0)   to[battery1, v=$E_1$, i_>=$I_1$, invert] (0,4)to[R, l=$R_1$,v<=$V_{R_1}$](4,4)to[short, i=$I_3$](8,4)--(8,3)
 (0,0)--(8,0)--(8,1)
-(4,4) to[battery1, v=$E_2$, i_>=$I_2$](4,2)to[R, l=$R_2$,v<=$V_{R_2}$](4,0)
+(4,4) to[battery1, v=$E_2$, i_>=$I_2$, invert](4,2)to[R, l=$R_2$,v<=$V_{R_2}$](4,0)
 (7,3)--(9,3)
 (7,1)--(9,1)
 (7,1)to[R, l=$R_3$, v>=$V_{R_3}$, i<^=$I_4'$](7,3)
@@ -522,9 +522,9 @@ Soit le circuit suivant où toutes les sources sont égales à $10V$ et toutes l
 $V_{R_4}=V_{R_3}$ et on transforme le schéma en:
 \begin{center}
 \begin{circuitikz} \draw
-(0,0)   to[battery1, v=$E_1$, i_>=$I_1$] (0,4)to[R, l=$R_1$,v<=$V_{R_1}$](4,4)to[short, i=$I_3$](8,4)--(8,3)
+(0,0)   to[battery1, v=$E_1$, i_>=$I_1$, invert] (0,4)to[R, l=$R_1$,v<=$V_{R_1}$](4,4)to[short, i=$I_3$](8,4)--(8,3)
 (0,0)--(8,0)--(8,1)
-(4,4) to[battery1, v=$E_2$, i_>=$I_2$](4,2)to[R, l=$R_2$,v<=$V_{R_2}$](4,0)
+(4,4) to[battery1, v=$E_2$, i_>=$I_2$, invert](4,2)to[R, l=$R_2$,v<=$V_{R_2}$](4,0)
 (8,1)to[R, l=$R_{34}$, v>=$V_{R_3}$](8,3)
 
 ;
@@ -596,7 +596,7 @@ Attention, il pourrait très bien arriver qu'une source joue le rôle de charge 
 
 \Question{0}
 {%Question
-\textit{Si une des deux sources était polarisée dans le sens inverse de celui indiqué sur le schéma, y aurait-il encore un courant dans le circuit ?} 
+\textit{Si une des deux sources était polarisée dans le sens inverse de celui indiqué sur le schéma, y aurait-il encore un courant dans le circuit ?}
 }
 {%Corrigé
 Dès le moment où, en suivant les conventions de signe choisies sur le schéma ci-dessus, la source $E_1$ est différente de la source $E_2$ (même si la valeur absolue est la même), les trois courants $I_1$, $I_2$ et $I_3$ seront différents de zéro.
