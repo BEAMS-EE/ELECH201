@@ -71,7 +71,7 @@ Voici 3 dipôles:
 \end{circuitikz}
 \end{center}
 \Question{0}
-{On fait passer un courant de $20mA$ d’amplitude et d’une fréquence de $1591Hz$ dans ces dipôles. Pour chacun d’entre eux, calculez le phaseur de la tension à ses bornes, tracez le dernier dans le plan complexe et déduisez-en l’impédance du dipôle.
+{On fait passer un courant de $20mA$ d’amplitude et d’une fréquence de $1591Hz$ dans ces dipôles. Pour chacun d’entre eux, calculez le phaseur de la tension à ses bornes, tracez ce dernier dans le plan complexe et déduisez-en l’impédance du dipôle.
 }
 {
 Le courant est de la forme $i(t)=\widehat{I} cos(\omega t)$  avec $\omega=2\pi f$, et son phaseur est $$\underline{I}=|\underline{I}|e^{jArg(\underline{I})}=\widehat{I}e^{j\Phi_I}=20\times 10^{-3}e^{j0°}=20\times 10^{-3}\ [A]$$
@@ -428,7 +428,7 @@ Dans ces conditions, déterminer la nouvelle impédance d'entrée équivalente.}
 }
 {%C
 La sonde (externe) à haute impédance permet de connecter le signal à étudier à l’oscilloscope tout en réalisant un facteur de division (par exemple 10 ou 100) indépendant de la fréquence.\\
-La sonde est constituée d’une résistance $R_S$ fixe et d’un condensateur $C_P$ réglable.\\
+La sonde est constituée d’une résistance $R_S$ fixe et d’un condensateur $C_S$ réglable.\\
 
 Le rapport de division est (par le diviseur impédant):\\
 $$\frac{\underline{V}_{in}}{\underline{V}_e}=\frac{Z_{in}}{Z_S+Z_{in}}=\frac{R_{in}//C_{in}}{R_{S}//C_{S}+R_{in}//C_{in}}=\frac{\frac{R_{in}}{1+j\omega R_{in}C_{in}}}{\frac{R_{S}}{1+j\omega R_{S}C_{S}}+\frac{R_{in}}{1+j\omega R_{in}C_{in}}}=\frac{1}{1+\frac{R_S}{R_{in}}\frac{1+j\omega R_{in}C_{in}}{1+j\omega R_{S}C_{P}}}$$
