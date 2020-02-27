@@ -61,7 +61,7 @@ Pour analyser un circuit électronique complexe, il est plus facile de commencer
 
 \subsection{Analyse préliminaire}
 \label{analysepréliminaire}
-Une propriété importante des ampli-op est leur produit "gain.bande passante". Le produit "gain.bande passante" d'un montage amplificateur à ampli-op est \textbf{constant}: si l'on augmente le gain du montage, la bande passante diminue et inversement (ceci est lié aux propriétés de la rétroaction - sans démonstration). Comme on va le voir, le produit "gain.bande passante" intervient dans le dimensionnement d'un montage à ampli-op.\\
+Une propriété importante des ampli-op est leur produit « gain$\cdot$bande passante ». Le produit « gain$\cdot$bande passante » d'un montage amplificateur à ampli-op est \textbf{constant}: si l'on augmente le gain du montage, la bande passante diminue et inversement (ceci est lié aux propriétés de la rétroaction - sans démonstration). Comme on va le voir, le produit « gain$\cdot$bande passante » intervient dans le dimensionnement d'un montage à ampli-op.\\
 
 Rappel: la bande passante est la plage de fréquence dans laquelle un circuit fonctionne sans que sa
 sortie ne soit atténuée de plus d'un facteur $\sqrt{2}$.\\
@@ -71,12 +71,23 @@ Pour notre montage, nous avons choisi d'utiliser des ampli-op TLE2061.
 \Question{0}
 {
 %question
-\textit{A l’aide de la notice du constructeur (voir Annexe B), donnez le produit « gain bande passante », les impédances d'entrée et de sortie et le courant maximum de sortie de cet ampli-op.}
+\textit{À l’aide de la notice du constructeur (voir Annexe B), donnez le produit « gain bande passante », les impédances d'entrée et de sortie et le courant maximum de sortie de cet ampli-op.}
 }
 {%assistant
+Losque l'on cherche des information dans une notice, il y a deux façon de procéder~:
+\begin{enumerate}
+  \item Chercher le nom exact du paramètre.
+  Le problème est que ces noms ne sont pas standards et peuvent changer d'un constructeur à l'autre.
+  \item Commencer par identifier toutes les lignes dont l'unité est appropriée.
+  Si l'on cherche un courant par exemple, il ne faut décrypter que les lignes dont l'unité est en Ampères [A].
+  Avoir une idée de l'ordre de grandeur de la valeur cherchée permet aussi de limiter les résultats.
+  Enfin, il faut de toute façon terminer par reconnaître le nom du paramètre dans la notice.
+\end{enumerate}
+
 \begin{itemize}
-\item $G.BW = 1,5MHz$
-\item $Z_{in} = 10 T\Omega+4pF$
+\item $G.BP = 1,5MHz$\\
+La ligne correspondant à cette information s'appelle « \textit{Unity-gain bandwidth} », c'est-à-dire le bande passante de l'étage amplificateur lorsque son gain $= 1$.
+\item $Z_{in} = 1 T\Omega \mbox{ combiné à } 4 pF$
 \item $Z_{out}=280\Omega$
 \item $I_{{out}_{sortant}}=80mA$
 \end{itemize}
@@ -88,7 +99,12 @@ Pour notre montage, nous avons choisi d'utiliser des ampli-op TLE2061.
 \textit{Calculez le gain maximum d'un étage à TLE2061 qui respecte la bande passante voulue.}
 }
 {%assistant
-$BW = 20kHz \Rightarrow G_{max} = 75$
+Notre application vise les fréquences entre $20 Hz$ et $20 kHz$, notre amplificateur doit donc être capable d'amplifier les fréquences jusqu'à au moins $20 kHz$.
+Cette fréquence maximale représente sa bande passante dans la relation « gain$\cdot$bande passante = constante ».
+
+Attention, la bande passante de l'AOP n'est pas $20 kHz - 20 Hz = 19,08 kHz$, mais bien $20 kHz$. De même, si l'application nous demandait de travailler entre $19 kHz$ et $20 kHz$, la bande passante serait toujours de $20 kHz$ et non $1 kHz$.
+
+$BP = 20kHz \Rightarrow G_{max} = 75$
 }
 
 \Question{0}
@@ -103,9 +119,11 @@ $BW = 20kHz \Rightarrow G_{max} = 75$
 }
 {%assistant
 \begin{itemize}
-\item $p=\frac{V_{eff}^2}{R} \Rightarrow V_{crete}^2=P\times R\times 2=16 \Rightarrow V_{crete}=4V$
+\item $P=\frac{V_{eff}^2}{R} \Rightarrow V_{crete}^2=P\times R\times 2=16 \Rightarrow V_{crete}=4V$\\
+En régime sinusoïdal, la puissance $P = V_{eff} \cdot I_{eff}$, où $V_{eff} = \frac{V_{max}}{\sqrt{2}} = \frac{V_{crete}}{\sqrt{2}}$.
 \item $G_{max}=\frac{4V}{25mV}=160$
-\item 2 étages nécessaires car $75^2=5625>160$
+\item 2 étages nécessaires car $75^2=5625>160$\\
+En effet, les gains des étages successifs sont multipliés et non additionnés.
 \end{itemize}
 }
 
@@ -125,7 +143,7 @@ $BW = 20kHz \Rightarrow G_{max} = 75$
 \begin{itemize}
 \item Montage en non-inverseur
 \item $G=1+\frac{R_2}{R_1} \Rightarrow G=40$
-\item La résistance de sortie de la source est $100k\Omega$. Or pour avoir une adaptation d'impédance, on doit avoir $R_{source} << R_{in} \Rightarrow$ Montage non-inverseur.
+\item La résistance de sortie de la source est $100k\Omega$. Or pour avoir une adaptation d'impédance, on doit avoir $R_{source} << R_{in} \Rightarrow$ Montage non-inverseur puisque sa résistance d'entrée est égale à celle de l'AOP lui-même, soit presque infinie.
 \end{itemize}
 }
 
@@ -137,7 +155,7 @@ $BW = 20kHz \Rightarrow G_{max} = 75$
 \textit{Du point de vue adaptation d'impédance, est-il raisonnable de connecter ce second étage au premier ?}
 }
 {%assistant
-Oui, tant que l'impédance d'entrée des montages en aval est beaucoup plus grande que $280\Omega$.
+Oui, tant que l'impédance d'entrée des montages en aval est beaucoup plus grande que $280\Omega$ (la résistance de sortie de l'AOP).
 }
 
 Le deuxième étage peut être divisé en deux blocs mis en parallèle qui eux-mêmes peuvent être divisés en deux sous-blocs. Le premier sous-bloc est un filtre et le second un ampli.
@@ -188,19 +206,22 @@ d'entrée de l'ampli :
 \begin{center}
 \includegraphics[scale=0.35]{filtre.PNG}
 \label{fonctionsblocs}
+
 \begin{tabular}{|c||c||c|}\hline
 $R_3 = 2.7 k\Omega$ & $R_4 = 100 k\Omega$ & $C_1 = 100 nF$ \\ \hline
 \end{tabular}
 \end{center}
-$$\omega = \frac{1}{\tau}\ et\ \omega=2\pi f \Rightarrow f=\frac{1}{2\pi \tau}\ avec\ \tau = RC$$
-$$R=\frac{R_3 R_4}{R_3 + R_4}=2629\Omega \Rightarrow \tau = 2,63 \times 10^{-4}$$
-$$\Rightarrow f = 605,15Hz$$
 
-Autre méthode si on ne se souvient pas de la constante de temps:\\
-La fréquence de coupure se produit, dans un circuit RC, quand l'impédance de la
-résistance est égale (en norme) à l'impédance du condensateur :
-$$|Z_R|=|Z_C|\Rightarrow R=\frac{1}{\omega C} \Rightarrow \omega =\frac{1}{RC} \Rightarrow f=\frac{1}{2\pi RC}$$
-Il suffit donc de calculer $R$ comme précédemment pour trouver la réponse.
+Afin de trouver la fréquence de coupure, il faut d'abord déterminer la réponse en fréquence $H(j\omega)$, ce qui est possible en utilisant la relation du diviseur impédant, avec $V_{out}$ pris sur $R_4$.
+\[\underline{V}_{out} = \frac{Z_{C_1} // R_4}{R_3 + Z_{C_1} // R_4} \cdot \underline{V}_{in}\]
+où $Z_{C_1} = \frac{1}{j\omega C_1}$, et donc $Z_{C_1} // R_4 = \frac{R_4 \cdot \frac{1}{j\omega C_1}}{R_4 + \frac{1}{j\omega C_1}} = \frac{R_4}{1 + j\omega R_4 C_1}$
+
+On trouve ainsi $H(j\omega) = \frac{\underline{V}_{out}}{\underline{V}_{in}} = \frac{R_4}{R_3 + R_4 + j\omega R_3 R_4 C_1}$
+
+La pulsation de coupure est la pulsation à laquelle le module de cette réponse en fréquence vaut $\frac{1}{sqrt{2}}$.
+
+Ainsi, $| H(j\omega_c) | = \frac{|R_4|}{|R_3 + R_4 + j\omega_c R_3 R_4 C_1|} = \frac{R_4}{\sqrt{(R_3 + R_4)^2 + \omega_c^2 R_3^2 R_4^2 C_1^2}} = \frac{1}{\sqrt{2}}$\\
+$\Leftrightarrow \omega_c = \sqrt{\frac{2R_4^2 - (R_3 + R_4)^2}{R_3^2 R_4^2 C_1^2}} = 3600.92 rad\cdot s^{-1} = 573 Hz$
 }
 
 Pour quelle raison avons-nous choisi une telle fréquence de coupure? La première idée qui vient à l'esprit est de placer la fréquence de coupure au milieu de la bande audio ($20Hz$ à $20kHz$), pour la diviser en deux parts égales. La fréquence de coupure divisant basses et aigües serait alors de $10kHz$ environ.\\
@@ -258,7 +279,9 @@ $$V_o=-\frac{R_{11}}{R_9}\times (V_{{i}_1}+V_{{i}_2})$$
 \textit{Quel est la plage de gain ?}
 }
 {%assistant
-De $0$ à $-20$ ($-\frac{R_{11}}{R_9}\cong -4.5$)
+De $0$ à $-4.5$.\\
+Notons que nous aurions voulu avoir un gain de $4$ afin d'avoir un gain total de 40 (gain premier étage) $\cdot$ 4 (troisième étage) = 160 (gain total souhaité).
+Le problème est purement pratique : les résistance de $22 k\Omega$ sont tout simplement beaucoup plus répandues et bon marché que celles de $25 k\Omega$.
 }
 
 \subsection{Etage de sortie}
