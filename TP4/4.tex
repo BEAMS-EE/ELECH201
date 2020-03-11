@@ -1,5 +1,5 @@
 \toptitle{[ELEC-H-201] Électricité et électronique}{TP4}
-\TPtitle{Électricité et électronique\vspace*{2mm}}{TP4:\vspace*{2mm} 
+\TPtitle{Électricité et électronique\vspace*{2mm}}{TP4:\vspace*{2mm}
 Électronique numérique}
 
 \frontpage{consignes4.tex}
@@ -73,14 +73,14 @@ Par exemple, pour obtenir la valeur 109 en binaire, suivez la procédure suivant
 	\item en 8 bits, $109_{10}$ commencera par: $01xxxxxx_2$
 	\item on calcule le reste du nombre: 109-64=45
 	\end{itemize}
-    
+
 \item on recommence, en se demandant simplement si la puissance de deux immédiatement inférieure ($2^5=32$ dans ce cas-ci) est contenue dans le reste ou non:
 	\begin{itemize}
 	\item si le reste est \textit{plus grand ou égal} à la puissance de 2, le chiffre binaire de cette puissance de 2 est 1
 	\item si le reste est \textit{plus petit} que la puissance de 2, le chiffre binaire de cette puissance de 2 est 0
 	\item on calcule le reste en retranchant le poids correspondant (si le chiffre binaire vaut 1) et on recommence jusqu'à ce que le reste soit nul
 	\end{itemize}
-    
+
 \item pour le reste 45, cela donne successivement:
 	\begin{itemize}
 	\item $45 > 32 (= 2^5)$ => chiffre binaire 1 pour $2^5$ – il reste: $45-32=13$
@@ -226,7 +226,7 @@ Pour $3287_{10}$, cela donne:
 \item $3287 < 4096 (= 16^3)$ => chiffre hexadécimal $0$ pour $16^3$ – il reste toujours $3287$
 \item $3287 > 256 (= 16^2)$ => diviser $3287$ par $256$ pour trouver le chiffre hexadécimal de poids $16^2$ : $3287/256=12,83$ => le chiffre hexadécimal de poids $16^2$ est $12_{10}$ c'est-à-dire $C_{16}$ - il reste: $3287-12.256 = 215$
 \item $215 > 16 (= 16^1)$ => diviser $215$ par 16 pour trouver le chiffre hexadécimal de poids $16^1$ : $215/16=13,4375$ => le chiffre hexadécimal de poids $16^1$ est $1310$ c'est-à-dire $D_{16}$ - il reste: $215-13.16 = 7$
-\item $7 < 16 (= 16^1)$ => 7 est le chiffre hexadécimal de poids $2^0$
+\item $7 < 16 (= 16^1)$ => 7 est le chiffre hexadécimal de poids $16^0$
 \item => le résultat est $3287_{10} = 0CD7_{16} = 0CD7h = 0x0CD7$
 \end{itemize}
 
@@ -400,7 +400,7 @@ $$X=\overline{A.B}=\overline{A}+\overline{B}$$
 			0&0&1\\
 			0&1&1\\
 			1&0&1\\
-			1&1&0\\         
+			1&1&0\\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -428,7 +428,7 @@ $$X=\overline{\overline{A.B}}=A.B$$
 			0&0&0\\
 			0&1&0\\
 			1&0&0\\
-			1&1&1\\         
+			1&1&1\\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -463,7 +463,7 @@ $$X=\overline{A.B+\overline{(B+C)}}$$
 			1&0&1&1\\
 			0&1&1&1\\
 			1&1&1&0\\
-            
+
 			\hline
 		\end{tabular}
 	\end{center}
@@ -500,7 +500,7 @@ Y=(A.(B+C))+(B.C)
 			1&0&1&1\\
 			0&1&1&1\\
 			1&1&1&1\\
-            
+
 			\hline
 		\end{tabular}
 	\end{center}
