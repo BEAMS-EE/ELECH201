@@ -240,7 +240,7 @@ Essayons de retrouver une forme semblable au diviseur résistif, mais dans le do
 En mettant $R_2$ et $L$ en parallèle, on obtient l'impédance équivalente: $$Z_{eq}=\frac{j\omega LR_2}{R_2+j\omega L}$$
 La tension $v_2(t)$ est alors celle au borne de $Z_{eq}$.\\
 Par le diviseur impédant:
-$$\underline{V}_2=\frac{Z_{eq}}{Z_{eq}+R_1}\underline{V}_S=\frac{\frac{j\omega LR_2}{R_2+j\omega L}}{R_1+\frac{j\omega LR_2}{R_2+j\omega L}}\underline{V}_S=\frac{j\omega LR_2}{R_1R_2+j\omega(R_1+R_2)}\underline{V}_S$$
+$$\underline{V}_2=\frac{Z_{eq}}{Z_{eq}+R_1}\underline{V}_S=\frac{\frac{j\omega LR_2}{R_2+j\omega L}}{R_1+\frac{j\omega LR_2}{R_2+j\omega L}}\underline{V}_S=\frac{j\omega LR_2}{R_1R_2+j\omega L(R_1+R_2)}\underline{V}_S$$
 $$=\frac{j1,37\times 10^4}{1,37\times 10^4+j2,37\times 10^4}\underline{V}_S=\frac{1,37}{\sqrt{1,37^2+2,37^2}}e^{j(\frac{\pi}{2}-atan(\frac{2,37}{1,37}))}\underline{V}_S=\frac{1}{2}e^{j30^o}\underline{V}_S$$.\\
 
 Et, en écrivant le phaseur de la tension d'entrée: $\underline{V}_S=2\times e^{j20^o}$, on a:
