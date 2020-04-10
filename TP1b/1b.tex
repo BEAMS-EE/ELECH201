@@ -431,7 +431,7 @@ La sonde (externe) à haute impédance permet de connecter le signal à étudier
 La sonde est constituée d’une résistance $R_S$ fixe et d’un condensateur $C_S$ réglable.\\
 
 Le rapport de division est (par le diviseur impédant):\\
-$$\frac{\underline{V}_{in}}{\underline{V}_e}=\frac{Z_{in}}{Z_S+Z_{in}}=\frac{R_{in}//C_{in}}{R_{S}//C_{S}+R_{in}//C_{in}}=\frac{\frac{R_{in}}{1+j\omega R_{in}C_{in}}}{\frac{R_{S}}{1+j\omega R_{S}C_{S}}+\frac{R_{in}}{1+j\omega R_{in}C_{in}}}=\frac{1}{1+\frac{R_S}{R_{in}}\frac{1+j\omega R_{in}C_{in}}{1+j\omega R_{S}C_{P}}}$$
+$$\frac{\underline{V}_{in}}{\underline{V}_e}=\frac{Z_{in}}{Z_S+Z_{in}}=\frac{R_{in}//C_{in}}{R_{S}//C_{S}+R_{in}//C_{in}}=\frac{\frac{R_{in}}{1+j\omega R_{in}C_{in}}}{\frac{R_{S}}{1+j\omega R_{S}C_{S}}+\frac{R_{in}}{1+j\omega R_{in}C_{in}}}=\frac{1}{1+\frac{R_S}{R_{in}}\frac{1+j\omega R_{in}C_{in}}{1+j\omega R_{S}C_S}}$$
 
 Pour que le signal à l'entrée de l'oscilloscope ne soit pas déformé, il faut que ce rapport soit indépendant de la fréquence et la sonde sera dite \underline{adaptée}, c'est-à-dire ici:\\
 $$R_SC_S=R_{in}C_{in}$$
@@ -448,7 +448,7 @@ $$Z_e=Z_{in}+Z_S=\frac{R_{in}}{1+j\omega R_{in}C_{in}}+\frac{R_{S}}{1+j\omega R_
 
 La résistance d'entrée et la capacité d'entrée sont devenues:\\
 $$R_e=R_{in}+R_S=kR_{in}$$
-$$C_e=\frac{C_{in}C_P}{C_{in}+C_P}=\frac{C_{in}}{k}$$\\
+$$C_e=\frac{C_{in}C_S}{C_{in}+C_S}=\frac{C_{in}}{k}$$\\
 
 La sonde permet donc d'augmenter la résistance d'entrée et de diminuer la capacité d'entrée.\\
 
