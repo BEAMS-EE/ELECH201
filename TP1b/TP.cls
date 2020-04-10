@@ -91,7 +91,7 @@
 {
     \lhead{#1 \\ #2}
     \chead{\ifthenelse{\boolean{corrige}}{Corrig\'e}{} \ifthenelse{\boolean{assistant}}{pour les assistants}{}}
-    \rhead{page : \thepage\\v1.1.6}
+    \rhead{page : \thepage\\v1.1.7}
     %\rhead{\longdate\displaydate{date}\\page : \thepage}
     \cfoot{}
     \pdfinfo{
