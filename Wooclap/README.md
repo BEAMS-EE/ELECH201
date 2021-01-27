@@ -1,0 +1,1 @@
+ La procédure d'import/export est décrite sur le site de Wooclap : https://docs.wooclap.com/fr/articles/674845-comment-importer-des-questions-deja-creees
