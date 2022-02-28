@@ -12,7 +12,7 @@
 \RequirePackage{lastpage}
 \RequirePackage{fancyhdr}% en têtes
 %\RequirePackage{datetime}
-\RequirePackage{hyperref}
+\RequirePackage[hidelinks]{hyperref}
 \RequirePackage{ifthen}
 \RequirePackage{amsthm}
 \RequirePackage{color}
@@ -91,7 +91,7 @@
 {
     \lhead{#1 \\ #2}
     \chead{\ifthenelse{\boolean{corrige}}{Corrig\'e}{} \ifthenelse{\boolean{assistant}}{pour les assistants}{}}
-    \rhead{page : \thepage\\v2.1.0}
+    \rhead{page : \thepage\\v3.0.0}
     %\rhead{\longdate\displaydate{date}\\page : \thepage}
     \cfoot{}
     \pdfinfo{

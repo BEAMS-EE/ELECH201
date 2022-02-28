@@ -13,11 +13,10 @@
 %\usepackage{textcomp}
 \usepackage{intcalc} % integer computation
 \usepackage{amsthm} %numéroter les questions
-%\usepackage{amsmath}
+% \usepackage{amsmath}
 \usepackage{mathastext} % math as standfard text : units are respecting typography conventions.
 \usepackage{datetime}
 \usepackage{xspace} % typographie IN
-\usepackage{hyperref}% hyperliens
 \usepackage[all]{hypcap} %lien pointe en haut des figures
 %\usepackage{datenumber}
 \usepackage{totcount} %faire le total des points des questions
@@ -27,10 +26,18 @@
 \usepackage[]{circuitikz}
 \usepackage{varioref}
 %\input cyracc.def
-%\usepackage{gnuplottex}
+\usepackage{gnuplottex}
 \usepackage{ifthen}
 \usepackage{todonotes}
 \usepackage{multicol}
+\usepackage{framed}
+\usepackage{bodegraph}
+\usepackage{gensymb}
+\usepackage{enumitem}
+%%%%%%%%%%%%%%%%%%%%
+% Units
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{siunitx}
 
 \pdfinfo{
 /Author (Raoul Sommeillier -- BEAMS)
@@ -39,8 +46,8 @@
 }
 \hypersetup{
 pdftitle={ELEC-H-201 Électricité et électronique},
-pdfauthor={Raoul Sommeillier ULB ©2019 ULB - BEAMS  },
-pdfsubject={Exam}
+pdfauthor={ULB - BEAMS},
+pdfsubject={}
 }
 
 \langexam{frenchb}
@@ -55,7 +62,7 @@ pdfsubject={Exam}
 \correction{true}
 \fi
 
-\author{Raoul Sommeillier}
+\author{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEBUT DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
