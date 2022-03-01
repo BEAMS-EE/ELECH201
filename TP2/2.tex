@@ -63,7 +63,18 @@ Sur les tracés suivants, quel est le gain naturel et en décibel pour 10~Hz, 1~
 \end{scope}
 \end{tikzpicture}
 }
-{}
+{
+  
+  \begin{center}
+  \begin{tabular}{cccc}
+  Relevé & 10 Hz & 1 kHz & 10 kHz \\ \hline
+  1 & 20 dB/10 & 0 dB/1 & -20 dB/0.1 \\
+  2 & -12 dB/4 & -10 dB/$10^{1/2}$ & 8 dB/2.5 \\
+  3 & 0 dB/1 & 20 dB/10 & 20 dB/10 \\
+  \end{tabular}
+  \end{center}
+  Gain en dB/gain naturel
+}
 
 \clearpage
 
@@ -80,7 +91,13 @@ Pour ces différents signaux d'entrée, quelle sera l'expression du signal de so
 \item $V_{in}(t)=2V\times cos(1000\frac{rad}{s}t+\frac{\pi}{6})$
 \end{enumerate}
 }
-{}
+{
+  \begin{enumerate}
+    \item 45 dB et -90° : $V_{out}(t) = 177 V \times cos(100\frac{rad}{s}t - \frac{\pi}{2})$
+    \item -50 dB et -145° : $V_{out}(t) = 3 mV\times cos(10^4\frac{rad}{s}t - 145°)$
+    \item 0 dB et -170° : $V_{out}(t) = 2 V\times cos(1000\frac{rad}{s}t - 140°)$
+  \end{enumerate}
+}
 
 
 \subsection{Filtre}
@@ -111,7 +128,9 @@ Nous pouvons immédiatement en déduire l'expression de sa réponse en fréquenc
 {
 Quelle est l'expression de l'impédance du condensateur, de l'inductance et de la résistance ?
 }
-{}
+{
+  $Z_R = R$, $R_C = \frac{1}{j\omega C}$, $R_L = j\omega L$
+}
 
 \Question{0}
 {
@@ -150,7 +169,14 @@ Quelle est la réponse en fréquence des quatre filtres suivants~?
   \end{circuitikz}\hspace*{1cm}
 \end{center}
 }
-{}
+{
+  \begin{itemize}
+    \item RC avec sortie sur R : $H(j\omega) = \frac{j\omega R C}{1 + j\omega R C}$
+    \item RC avec sortie sur C : $H(j\omega) = \frac{1}{1 + j\omega R C}$
+    \item RL avec sortie sur R : $H(j\omega) = \frac{R}{R + j\omega L}$
+    \item RL avec sortie sur L : $H(j\omega) = \frac{j\omega L}{R + j\omega L}$
+  \end{itemize}
+}
 
 \subsubsection{Passe-haut ou passe-bas}
 
@@ -163,7 +189,17 @@ Pour déterminer le type d'un filtre, on peut procéder à une \textit{étude as
 {
 Quel est le type de chacun des filtres précédents ?
 }
-{}
+{
+  \begin{center}
+    \begin{tabular}{cccc}
+    Filtre & $\omega \rightarrow 0$ & $\omega \rightarrow \infty$ & Type \\ \hline
+    RC avec sortie sur R & $|H(j\omega)| = 0$ & $|H(j\omega)| = 1$ & Passe-haut \\
+    RC avec sortie sur C & $|H(j\omega)| = 1$ & $|H(j\omega)| = 0$ & Passe-bas \\
+    RL avec sortie sur R & $|H(j\omega)| = 1$ & $|H(j\omega)| = 0$ & Passe-bas \\
+    RL avec sortie sur L & $|H(j\omega)| = 0$ & $|H(j\omega)| = 1$ & Passe-haut \\
+    \end{tabular}
+  \end{center}
+}
 
 \subsubsection{Fréquence de coupure}
 De passant à bloquant, un filtre change de comportement à une fréquence particulière~: sa \textbf{fréquence de coupure} $f_c$ ou \textbf{pulsation de coupure} $\omega_c$.
@@ -180,13 +216,28 @@ Il y a trois manières différentes de déterminer cette fréquence particulièr
 Quel est le temps caractéristique\footnote{Il s'agit aussi de sa constante de charge.} d'un circuit RC~? D'un circuit RL~?
 Déduisez-en les pulsations de coupure respectives.
 }
-{}
+{
+  \begin{center}
+    \begin{tabular}{ccc}
+    Circuit & $\tau$ & $\omega_c$ \\ \hline
+    RC & $RC$ & $1/RC$ \\
+    RL & $L/R$ & $R/L$ \\
+    \end{tabular}
+  \end{center}
+}
 
 \Question{0}
 {
 Vérifiez que le gain à cette fréquence de coupure est de -3 dB pour les circuits RC et RL.
 }
-{}
+{
+  \begin{itemize}
+    \item RC avec sortie sur R : $H(j\omega) = \frac{j\omega R C}{1 + j\omega R C}$, donc $|H(j\omega)| = \frac{\omega R C}{\sqrt{1 + (\omega R C)^2}}$
+    \item RC avec sortie sur C : $H(j\omega) = \frac{1}{1 + j\omega R C}$, donc $|H(j\omega)| = \frac{1}{\sqrt{1 + (\omega R C)^2}}$
+    \item RL avec sortie sur R : $H(j\omega) = \frac{R}{R + j\omega L}$, donc $|H(j\omega)| = \frac{R}{\sqrt{R^2 + (\omega L)^2}}$
+    \item RL avec sortie sur L : $H(j\omega) = \frac{j\omega L}{R + j\omega L}$, donc $|H(j\omega)| = \frac{\omega L}{\sqrt{R^2 + (\omega L)^2}}$
+  \end{itemize}
+}
 
 Pour pouvoir utiliser la troisième méthode (pôles et zéros), il faut comprendre comment analyser une réponse en fréquence et en déduire le diagramme de Bode.
 
@@ -289,7 +340,42 @@ Dans ce cas précis, il s'agit d'un filtre passe-haut.
 {
 Réalisez les tracés asymptotiques des diagrammes de Bode des trois autres filtres vus précédemment.
 }
-{}
+{
+  Les RC et RL passe-hauts sont identiques.
+
+  Quant aux passe-bas, il ressembleront à ceci~:
+
+  \begin{center}
+  \begin{tikzpicture}[gnuplot def/.append style={prefix={}},xscale=7/4]% 7 cm horizontaly for 5 decades
+   \tikzset{
+   semilog lines/.style={black!70},
+   semilog lines 2/.style={gray!50},
+   semilog half lines/.style={gray!50, dotted},
+   semilog label x/.style={below,font=\scriptsize},
+   semilog label y/.style={above,font=\scriptsize},
+   % every node/.style={font=\scriptsize},
+   Bode lines/.style={very thick, blue},
+   asymp lines/.style={Bode lines, very thick} }
+  \begin{scope}[yscale=3/80] % 3 cm verticaly for 80 dB
+  \UnitedB
+  % \def\Unitx{Hz}
+  \OrdBode{20}
+  \semilog{1}{5}{-60}{20}
+  \BodeGraph[]{1:5}{\POAmpAsymp{1}{0.001}} % Low pass
+  \node [ref points, label={$\omega_c$}] at (3, -60) {};
+  \end{scope}
+  \begin{scope}[yshift=-5cm, yscale=3/270]
+  \UniteDegre
+  % \def\Unitx{Hz}
+  \OrdBode{90}
+  \semilog{1}{5}{-180}{90}
+  \BodeGraph[asymp lines,samples=100, const plot]{1:5}{\POArgAsymp{1}{0.001}} % High-pass
+  % If the transition from one phase to another is not "straight" enough, you might not have enough samples or you forgot the "const plot" argument.
+  \node [ref points, label={$\omega_c$}] at (3, -90) {};
+  \end{scope}
+  \end{tikzpicture}
+  \end{center}
+}
 
 
 \subsection{Dimensionnement}
@@ -299,14 +385,23 @@ Réalisez les tracés asymptotiques des diagrammes de Bode des trois autres filt
 Concevez un filtre passe-bas ayant une fréquence de coupure de 1 kHz.
 Réalisez une version avec un condensateur et une autre avec une inductance.
 }
-{}
+{
+  \begin{itemize}
+    \item Version RC~: pour un passe-bas, la sortie doit être sur le condensateur.
+    La fréquence de coupure est $ f_c = 1/2\pi RC = 1 kHz$. Nous avons un degré de liberté, posons par exemple une résistance de $1 k\Omega$, ce qui implique l'utilisation d'un condensateur de 159 nF.
+    \item Version RL~: pour un passe-bas, la sortie doit être sur la résistance.
+    La fréquence de coupure est $ f_c = R/2\pi L = 1 kHz$. Nous avons un degré de liberté, posons par exemple une résistance de $1 k\Omega$, ce qui implique l'utilisation d'un condensateur de 318 mH.
+  \end{itemize}
+}
 
 \Question{0}
 {
 Concevez un filtre passe-haut ayant une fréquence de coupure de 5 kHz.
 Réalisez une version avec un condensateur et une autre avec une inductance.
 }
-{}
+{
+  Les filtres seront identiques à la question précédente, si ce n'est la sortie qui sera prise sur l'autre composant de la paire.
+}
 
 
 \Question{0}
@@ -478,16 +573,22 @@ Un montage plus complet consisterait à connecter une source de tension à l'ent
 
 \Question{0}
 {
-Quelle est l''expression de $V_{out}$ en fonction de $V_{in}$ ?
+Quelle est l'expression de $V_{out}$ en fonction de $V_{in}$ ?
 Déduisez-en l'expression du gain du montage complet.
 }
-{}
+{
+  $V_{out} = A \cdot \frac{Z_{ch}}{Z_{out} + Z_{ch}} \cdot \frac{Z_S}{Z_S + Z_{in}} \cdot V_{in}$.
+  Le gain est donc $A \cdot \frac{Z_{ch}}{Z_{out} + Z_{ch}} \cdot \frac{Z_S}{Z_S + Z_{in}}$.
+}
 
 \Question{0}
 {
 Le gain de l'amplificateur seul étant $A$, quels paramètres doit-on optimiser pour faire tendre le gain du montage entier vers cette valeur ?
 }
-{}
+{
+  On ne peut changer que les paramètres \textit{internes} à l'amplificateur.
+  $Z_{out} \rightarrow 0$ et $Z_{in} \rightarrow \infty$.
+}
 
 \subsection{Amplificateur opérationnel idéal}
 Un amplificateur opérationnel (AOP) idéal est un type particulier d'amplificateur ayant généralement deux entrées et une sortie.
@@ -643,7 +744,12 @@ Déterminez le gain du montage non-inverseur~:
 \end{center}
 
 }
-{}
+{
+  Par le zéro virtuel, $V_+ = V_- = V_{in}$.
+    Par la loi d'Ohm et la maille partant de la masse connectée à la résistance $R_1$ jusqu'à la masse de la source de tension, on trouve $i_1 = \frac{V_{in}}{R_1}$.
+    L'entrée de l'ampli-op ayant une impédance infinie, le courant entrant dans l'ampli-op est nul. On a donc $i_1 = i_2$.
+    En appliquant la loi d'Ohm à la maille partant de la masse connectée à $R_1$ jusqu'à la masse de la tension de sortie, on peut trouver $V_o = V_{in} + R_2\cdot i_2 = V_{in} + R_2 \cdot \frac{V{in}}{R_1} = (1 + \frac{R_2}{R_1}) \cdot V_{in}$.
+}
 
 \subsection{Dimensionnement d'une chaîne d'amplification}
 Un AOP seul est malheureusement limité, notamment dans son gain maximal.
@@ -668,14 +774,28 @@ GBP & Bande-passante (max) & Gain (max) \\ \hline
 \end{tabular}
 \end{center}
 }
-{}
+{
+  \begin{center}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{ccc}
+  GBP & Bande-passante (max) & Gain (max) \\ \hline
+  1~MHz & 20~kHz & 50 \\
+  5~MHz & 1 MHz & 5 \\
+  100~kHz & 200~kHz & 0.5 \\
+  \end{tabular}
+  \end{center}
+}
 
 \Question{0}
 {
 Vous avez un signal dont la fréquence maximale est 50~kHz et vous aimeriez l'amplifier avec un gain de 50.
 Un AOP avec un GBP de 3~MHz est-il suffisant~?
 }
-{}
+{
+  Pour une bande passante de 50~kHz, un AOP avec un GBP de 3~MHz peut amplifier avec un gain de 60.
+  Mais ce n'est pas parce qu'il en est \textit{capable} qu'on doit absolument le configurer avec ce gain.
+  En utilisant un gain de seulement 50, l'AOP sera capable d'amplifier correctement jusqu'à 60~kHz, ce qui respecte les instructions.
+}
 
 Malgré cette limite, il est possible d'atteindre de grands gains en enchaînant plusieurs étages.
 Dans une telle configuration, les gains successifs sont \textbf{multipliés}\footnote{Une erreur commune est d'additionner les gains successifs.}.
@@ -684,7 +804,9 @@ Dans une telle configuration, les gains successifs sont \textbf{multipliés}\foo
 {
 Si on utilise un AOP dont le gain maximal est 10, combien d'étages sont nécessaires pour atteindre un gain de 50 ?
 }
-{}
+{
+  Il en faut seulement deux.
+}
 
 Nous avons à présents en main toutes les clefs pour concevoir une chaîne d'amplification sur base d'un cahier des charges écrit.
 Soient les contraintes suivantes~:
