@@ -31,9 +31,31 @@
 \usepackage{ifthen}
 \usepackage{todonotes}
 \usepackage{multicol}
+\usepackage{fontawesome}
+\usepackage{siunitx}
+
+%%%%%%%%%%%%
+% Tables
+%%%%%%%%%%%%
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.1} % Opens up the table a tad
+\usepackage{multicol}
+\usepackage{multirow}
+
+\newenvironment{astuce}%
+{%
+	\begin{tcolorbox}[enhanced,
+					colback=black!5!white,
+					colframe=black,
+					boxrule=0.5pt,
+					attach boxed title to top left={yshift=-3mm,yshifttext=-1mm},
+					boxed title size=copy,
+					title={Astuce}]
+}%
+{\end{tcolorbox}}
+
 
 \pdfinfo{
-/Author (Raoul Sommeillier -- BEAMS)
 /Title (ELEC-H-201, 18 février 2019)
 /ModDate (D:\pdfdate)
 }

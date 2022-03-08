@@ -1,121 +1,341 @@
 \toptitle{[ELEC-H-201] Électricité et électronique}{TP3}
 \TPtitle{Électricité et électronique\vspace*{2mm}}{TP3:\vspace*{2mm}
-Réalisation d'un amplificateur audio - 2\up{e} partie: câblage et test du montage}
+Réalisation d'un amplificateur audio}
 
 \frontpage{consignes3.tex}
 \vspace{5cm}
 \newpage
 
-\section{Manipulation}
-\subsection{Introduction}
-Lors de ce laboratoire, vous allez câbler sur un protoboard l’amplificateur audio analysé au labo précédent (TP2: Réalisation d'un amplificateur audio - 1\up{ère} partie : analyse du montage). Pour réaliser un montage clair, il est important de respecter quelques règles qui vous sont données ci-dessous.
-\subsubsection{Positionnement sur le protoboard}
-Afin de pouvoir visualiser votre montage et ainsi retrouver les erreurs éventuelles, il faut regrouper le plus possible les composants d’un étage (= un bloc) dans une même zone et mettre les différents étages dans l’ordre du schéma.
-\subsubsection{Code couleurs}
-L’utilisation d’un code couleurs pour les fils qui relient vos composants permet de bien distinguer les fils servant pour les différentes alimentations et pour les signaux.
-Pour faciliter la tâche des assistants, nous vous avons défini un code couleur (il n’existe pas un code standard, mais généralement, le noir est utilisé pour les fils de masse et le rouge pour l’alimentation) :
+\section{Introduction}
 
+Les passages nécessitant des pré-déterminations ou des réflexions théoriques sont indiqués par un symbole \faCogs~ dans la marge,
+ceux nécessitant de manipuler du matériel par le symbole \faFlask~ et les passages informatif par \faLightbulbO.
+
+\subsection{But de la manipulation et objectifs d'apprentissage}
+
+Les buts de cette manipulation sont :
 \begin{itemize}
-\item Alimentation +12V : mauve
-\item Alimentation +5V : rouge
-\item Masse : noir
-\item Alimentation -12V : bleu
-\item Signaux : autres que ceux utilisé pour les alimentations
+	\item illustrer l'utilisation des amplificateurs opérationnels dans une application réaliste ;
+	\item réaliser un montage électronique « grand public ».
 \end{itemize}
 
-Les montages qui ne respectent pas ce code ne seront pas corrigés!
-
-\subsubsection{Longueur des fils}
-Tout conducteur (notamment tout fil) est une antenne qui peut capter les parasites environnants. Ces parasites proviennent de plusieurs sources telles que les néons, antennes GSM, … La quantité de parasites dépend de la longueur des fils: plus les fils utilisés sont longs, plus vous capterez de parasites. De plus, des fils longs nuisent à la clarté de votre montage.
-Il est donc impératif d’utiliser des fils les plus courts possibles. Plusieurs pinces à dénuder et coupante seront à votre disposition dans le laboratoire.
-
-\subsubsection{Vérification de chaque étage}
-Il est toujours plus difficile de trouver les erreurs dans un gros montage que dans un plus petit. Il faut donc tester vos étages séparément. Après avoir réalisé un bloc et avant de le connecter au précédent, mettez à son entrée un signal (à l’aide du générateur) et mesurez le signal de sortie: est-il bien celui que vous attendez?
-
-\subsection{Montage}
-Nous allons réaliser ce montage étage par étage. Les schémas de branchement des composants intégrés sont donnés à la fin de ce document.
-\subsubsection{Étage d’entrée}
-Comme nous l’avons vu au premier labo, cet étage sert d’adaptation d’impédance et d’une première amplification.
-
+À la fin de ce laboratoire, vous devez  :
+\vspace{3mm}
 \begin{itemize}
-\item Câblez-le.
-\item Ajoutez un signal d’entrée sinusoïdal variant entre -200mV et 200mV et de fréquence de 500Hz.
-\item Visualisez les signaux d’entrée et de sortie à l’oscilloscope.
-\item Vérifiez que le circuit réalise bien un gain de 40. Si ce n’est pas le cas, vérifiez votre montage et retestez-le.
+\item être capable d'expliquer le fonctionnement de notre ampli audio ;
+\item être capable de câbler proprement un circuit complexe sur un protoboard ;
+\item vous être rendu compte qu'on peut comprendre le fonctionnement d'un circuit électronique complexe en identifiant des blocs (étages ampli-op, filtres) et en les analysant séparément, pour après comprendre le fonctionnement de l'ensemble.
 \end{itemize}
 
-\subsubsection{Filtre + volume des basses}
-La première partie de ce bloc est un filtre passe-bas de fréquence de coupure de 595Hz et la seconde permet de régler le volume des basses.
-
+\subsection{Pré-requis}
+Les notions liées aux amplis-op sont supposées connues :
 \begin{itemize}
-\item Câblez ce montage sans le raccorder au premier étage.
-\item Ajoutez un signal d’entrée sinusoïdal variant entre -4V et 4V et de fréquence de 100Hz.
-\item Visualisez les signaux d’entrée et de sortie à l’oscilloscope.
-\item En bougeant le potentiomètre, vous devriez voir le signal de sortie varier.
-\item Mettez le gain à 1 et augmentez la fréquence à 6kHz
-\item Observez l’effet du filtre passe-bas.
+\item adaptation d'impédances ;
+\item gain ;
+\item produit gain-bande passante.
 \end{itemize}
 
-\subsubsection{Filtre et volume des aigus}
-Ce bloc est similaire au précédent à la différence du filtre qui est un passe-haut de même fréquence de coupure.
+\subsection{Matériel}
+\begin{center}
+	\begin{tabular}{p{0.2\textwidth}rlp{0.1\textwidth}}
+		Composant & \multicolumn{2}{c}{Valeur} & Quantité \\\toprule
+		\multirow{5}{*}{Résistance} & 1 & $\si{\kohm}$ & x1 \\
+									& 2.7 & $\si{\kohm}$ & x2 \\
+									& 22 & $\si{\kohm}$ & x4 \\
+									& 39 & $\si{\kohm}$ & x1 \\
+									& 100 & $\si{\kohm}$ & x2 \\\midrule
+		\multirow{1}{*}{Potentiomètre} 	& 100 & $\si{\kohm}$ & x3 \\\midrule
+		\multirow{4}{*}{Condensateur} 	& 10 & $\si{\micro\farad}$ & x2 \\
+									 	& 100 & $\si{\nano\farad}$ & x2 \\
+									 	& 330 & $\si{\nano\farad}$ & x1 \\
+									 	& 1 & $\si{\micro\farad}$ & x1 \\\midrule
+		\multirow{1}{*}{Jack femelle} 	&  &  & x1 \\\midrule
+		\multirow{1}{*}{AOP TLV274IN} 	&  &  & x2 \\\midrule
+		\multirow{1}{*}{AOP NJM2113D} 	&  &  & x1 \\\midrule
+		\multirow{1}{*}{ADM660ANZ} 	&  &  & x1 \\\bottomrule
+	\end{tabular}
+\end{center}
 
+\subsection{Prédéterminations} %{\normalsize{(1 point)}}}
+Avant d'entrer au laboratoire, il est conseillé de lire le dimensionnement du montage (§\ref{Dimensionnement}), de comprendre le
+fonctionnement du montage et répondre aux questions.
+
+
+
+\clearpage
+\section{Manipulation - Préliminaire théorique}
+Cette première partie ne contient pas de réalisation pratique, il s'agit d'une étude théorique du montage.
+
+\subsection{Définition du problème}
+Le but de ce laboratoire est de réaliser une chaîne d'amplification audio.
+La source sera fournie par la sortie audio d'un ordinateur ou de votre téléphone via le connecteur jack 3.5 mm.
+% \textit{Note : }Étant donné que cette sortie est déjà amplifiée, afin qu'on puisse par exemple y connecter une paire d'écouteurs, nous allons artificiellement dégrader le signal à l'aide d'un diviseur résistif.
+
+On dispose des informations suivantes :
+\vspace{3mm}
 \begin{itemize}
-\item Câblez ce montage sans le raccorder au premier étage.
-\item Ajoutez un signal d’entrée sinusoïdal variant entre -4V et 4V et de fréquence de 2kHz.
-\item Visualisez les signaux d’entrée et de sortie à l’oscilloscope.
-\item En bougeant le potentiomètre, vous devriez voir le signal de sortie varier.
-\item Mettez le gain à 1 et diminuez la fréquence à 50Hz
-\item Observez l’effet du filtre passe-haut.
+\item Vous devez régler votre source pour qu'elle produise un signal d'environ 25 mV.
+\item L'impédance de sortie de votre source est indéterminée.
+\item Le HP se comporte comme une résistance de $16\Omega$ dans la plage des fréquences audio (impédance classique d'un HP). Sa puissance est limitée à 500 mW.
+\item La plage des fréquences audio s'étend de 20 Hz à 20 kHz.
+\item On désire pouvoir régler le volume sonore.
 \end{itemize}
 
-\subsubsection{Étage sommateur + volume}
-Cet étage permet de mélanger les deux signaux provenant de l’étage précédent et de régler le volume.
+
+\subsection{Dimensionnement de l'ampli audio}
+\label{Dimensionnement}
+
+\subsubsection{Définition des critères de dimensionnement de l'ampli}
 
 \begin{itemize}
-\item Câblez ce montage sans le raccorder à l’étage précédent.
-\item Ajoutez un signal sinusoïdal variant entre -1V et 1V et de fréquence de 500Hz sur une des entrées. Branchez l’autre entrée sur l’alimentation 5V.
-\item Visualisez les signaux d’entrée et de sortie à l’oscilloscope.
-\item En bougeant le potentiomètre, vous devriez voir le signal de sortie varier.
+\item Impédance d'entrée : $Rin >>\ ?$, il faut donc qu'elle soit la plus grande possible.
+\item Impédance de sortie : $Rout << 16\Omega$.
+\item Gain : pour pouvoir régler le volume sonore, nous aurons besoin d'un gain variable.
+\item Le gain minimum doit idéalement valoir 0 pour pouvoir annuler totalement le volume, ce qui implique la présence d'au moins un étage inverseur dans notre montage.
+\item Bande passante : la bande-passante de chaque étage doit être supérieure ou égale à 20kHz.
 \end{itemize}
-\subsubsection{Assemblage}
-\begin{itemize}
-\item Raccordez tous vos étages déjà câblés.
-\item Vérifiez à l’aide d’un signal d’entrée que votre circuit réalise toute les fonctions voulues.
-\end{itemize}
+
+\Question{0}
+{
+Calculez la valeur de crête maximum supportée par le HP.
+}
+{$P = \frac{V^2}{R} \Leftrightarrow V = \sqrt{P \cdot R} = \sqrt{0.5 \cdot 16} = 2\cdot \sqrt{2}$, soit 4 V crête.}
+
+\Question{0}
+{
+Déduisez-en le gain maximum du montage.
+}
+{$\frac{4 V}{25 mV} = 160$}
+
+\subsubsection{Calcul du nombre d'étages nécessaire}
+Nous utiliserons des TLV274IN pour ce montage.
+\Question{0}
+{
+Calculez le gain maximum d'un étage à TLV274IN qui respecte la bande passante voulue.
+}
+{3MHz / 20kHz = 150}
+\Question{0}
+{
+Déduisez-en le nombre d'étages nécessaires pour notre ampli audio.
+}
+{2}
+
+
+\subsubsection{Choix du type des étages}
+\Question{0}
+{
+Le 1er étage doit être un étage non-inverseur. Expliquez pourquoi.
+}
+{Adaptation d'impédance.}
+
+Le choix du deuxième étage est moins strict, nous choisirons le montage inverseur pour pouvoir annuler totalement le gain.
+
+On peut diviser le gain entre les deux étages librement (tant qu'on ne dépasse le gain maximum pour un étage) ; on a choisi 40 pour le premier étage et 4 pour le second.
+
+On obtient donc un 1er schéma pour notre ampli audio :
+\begin{center}
+\includegraphics[width=14cm]{figures/AOP2etages.png}
+\end{center}
+Avec les composants suivants~:
+\begin{center}
+\begin{tabular}{|c||c||c||c||c||c|}\hline
+$R_1 = 10 k\Omega$ & $R_2 = 100 k\Omega$ & $R_3 = 1 k\Omega$ & $R_4 = 39 k\Omega$ & $R_5 = 22 k\Omega$ & $R_6 = 100 k\Omega$ \\ \hline
+\multicolumn{2}{|c||}{AOP1 et AOP2 = TLV274IN} & \multicolumn{2}{c||}{+Val = 5 V} & \multicolumn{2}{c|}{-Val = -5 V} \\ \hline
+\end{tabular}
+\end{center}
+Et où $R_S$ représente la résistance de sortie de la source de tension du montage. Lorsque vous utilisez le générateur, vous pouvez utiliser une valeur de $600 \si{\ohm}$.
+
+\textit{Note :} En pratique, nous utiliserons une résistance de $22 k\Omega$ pour $R_5$, valeur bien plus commune que $25 k\Omega$. Le gain de cet étage sera donc de 4.54 au lieu de 4 comme dimmensionné.
+
+Le potentiomètre $R_6$ est utilisé comme résistance variable et nous permet ainsi de faire varier le gain total du montage de 0 à 160 (181 en réalité).
+
+\subsubsection{Effet des imperfections}
+
+\Question{0}
+{\label{q:decalage}
+Calculez l'effet des tensions de décalage d'entrée ($e_o$) des deux amplis-op sur la tension de sortie. Utilisez les valeurs \textit{typiques} de la fiche technique.
+\textit{Note :} Pour cette question, on ignore donc la contribution des courants de polarisation et de décalage, ainsi que la contribution de la source de tension.
+}
+{La totale : $$V_{o1} = \left(1 + \frac{R_2}{R_1}\right) \cdot e_{o1} + (-R_S\cdot I^+) \cdot \left(1 + \frac{R_2}{R_1} \right) + R_2\cdot I^- = 5.5 mV$$
+
+$$V_{o2} = V_{o1} \cdot \left( \frac{-R_6}{R_5} \right) + e_{o2} \cdot \left( 1 + \frac{R_6}{R_5} \right) + R_6 \cdot I^- = -22.2 mV$$
+
+Avec $e_{o1} = e_{o2} = 0.5 mV$, $R_S = 600 \si{\ohm}$, $I^+ = 1.5 pA$ et $I^-= 0.5 pA$.
+}
+
+\Question{0}
+{
+Vérifiez que l'effet des courants d'entrée est négligeable.
+}
+{Voir réponse de la question~\ref{q:decalage}}
+
+Les HP ne supportent pas qu'on leur applique des tensions continues ; en effet, la partie électrique d'un HP est essentiellement composée d'une bobine dont l'impédance est quasi nulle en continu. Il faudra donc éliminer cette composante continue.
 
 \subsubsection{Étage de sortie}
-Cet étage est un amplificateur de puissance spécialement conçu pour des applications audio de faible puissance sonore.
+On peut remarquer que la résistance de charge est de faible valeur ; cela implique qu'il faut pouvoir lui fournir un courant important :
+$$I_{out,max}=\frac{V_{out,max}}{R_{H.P.}}=\frac{4V}{16\Omega}=250mA$$
+C'est beaucoup plus que ce que peut fournir un TLV274IN. Il faut donc ajouter un 3e étage, appelé étage de sortie, dont le rôle est de fournir le courant nécessaire à la charge. Il existe des amplis-op spécialement conçus pour réaliser ces étages de sortie.\\
+Les fabricants conseillent d'utiliser ces amplis-op dans des montages dont le gain est faible (typiquement A = 1), pour optimiser leurs performances. Leur but n'est pas d'amplifier leur tension d'entrée, mais de fournir le courant
+nécessaire à la charge.
 
-\begin{itemize}
-\item Câblez ce montage sans le raccorder à l’étage sommateur.
-\item Ajoutez un signal d’entrée sinusoïdal variant entre -2V et 2V et de fréquence 500Hz.
-\item Observez VO1 sur le canal 1 de l’oscilloscope et VO2 sur le canal 2. Remarquez qu’ils ont la même composante continue et des composantes alternatives en opposition de phase.
-\end{itemize}
+On utilisera l'ampli-op NJM2113 ; il peut fournir une puissance de 400 mW à une charge de $16\Omega$. Il a été spécialement conçu pour les applications demandant une faible puissance sonore : GSM, baladeur, carte son, etc.
 
-\subsubsection{Test du montage complet}
-\begin{itemize}
-\item Raccordez l'amplificateur de puissance au reste de votre circuit.
-\item Branchez le diviseur résistif, le câble jack et le haut-parleur à votre ampli.
-\item Testez en le bon fonctionnement.
-\item Félicitations: vous venez de fabriquer votre premier amplificateur audio !
-\end{itemize}
+Malheureusement, ces appareils ne disposent en général que d'une source de tension de 5V (produite en régulant la tension de la batterie ou des piles) ; il est impossible d'alimenter les ampli-op de manière symétrique (+12V/- 12V, +5V/-5V, etc). Le NJM2113 a donc été spécialement conçu pour être alimenté en +5V/0V.\\
+Cela a une conséquence importante (et gênante) : les limites d'écrêtage de l'ampli ne sont plus symétrique et en particulier, le signal de sortie ne peut plus devenir négatif.\\
+On ne peut donc pas amplifier directement notre signal (qui est purement alternatif) avec cet ampli.\\
+On doit lui ajouter une composante continue, pour que le signal de sortie ne devienne jamais négatif :
+\begin{center}
+\includegraphics[width=10cm]{figures/AOPetage3}
+\end{center}
+
+Dans le schéma ci-dessus, $V_i$ est le signal que l'on veut amplifier (signal utile) et $E$ est une tension continue (à déterminer) qui va empêcher la tension de sortie de devenir négative.\\
+On a ajouté un condensateur en série avec l'entrée, pour supprimer l'éventuelle composante continue de $V_i$. Cet étage a donc un comportement de filtre passe-haut; sa fréquence de coupure est de $20Hz$.
+\Question{0}
+{
+Calculez l'effet de $E$ sur la tension de sortie, sachant que $E$ est une tension purement continue.
+}
+{$V_o = E$, le montage se comporte comme un suiveur pour le continu.}
+
+\Question{0}
+{
+Calculez l'effet de $V_i$ sur la tension de sortie, en considérant que $V_i$ est une tension purement continue.
+}
+{$V_o = 0$, ne passe pas le condensateur.}
+
+\Question{0}
+{
+Calculez l'effet de $V_i$ sur la tension de sortie, en considérant que $V_i$ est une tension sinusoïdale dont la fréquence est telle qu'on peut considérer que $C2$ comme un court-circuit.
+}
+{$V_o = -V_i$}
+
+\Question{0}
+{
+Ce montage est un filtre passe-haut. Vérifiez que sa fréquence de coupure vaut environ $20Hz$.
+}
+{
+	$$H(j\omega) = \frac{-j\omega R_5 C_2}{1 + j\omega R_4 C_2}$$
+
+	\begin{tabular}{rl}
+		$|H(j\omega)| = \frac{\omega R_5 C_2}{\sqrt{1 + \omega^2 R_4^2 C_2^2}}$ &= $\frac{1}{\sqrt{2}}$ \\
+		$\Leftrightarrow \omega R_5 C_2 \sqrt{2}$ &$=\sqrt{1 + \omega^2 R_4^2 C_2^2}$ \\
+		$\Leftrightarrow \omega^2 R_5^2 C_2^2 \cdot 2$ &= $1 + \omega^2 R_4^2 C_2^2$ \\
+		$\Leftrightarrow \omega$ &= $\sqrt{\frac{1}{R_5^2 C_2^2 \cdot 2 - R_4^2 C_2^2}}$\\
+		$\Leftrightarrow \omega$ &= 137.74\\
+		$\Leftrightarrow f$ &= 21.9 Hz
+	\end{tabular}
+}
+
+On doit choisir la valeur de $E$ qui maximise l'amplitude admissible de $V_i$ ; il faut donc choisir $E = 2,5V$ pour avoir une valeur crête de $V_i = 2,5V$.\\
+Avec ce montage, on arrive donc à amplifier notre signal d'entrée sans être gêné par les limites d'écrêtage de l'ampli-op.\\
+Ce montage a cependant un gros inconvénient : sa tension de sortie a une composante continue importante ($2,5V$); on ne peut donc connecter directement un HP à sa sortie. On pourrait placer un condensateur entre la sortie de l'ampli et le HP pour créer un filtre passe-haut, mais la valeur de ce condensateur devrait être très élevée pour avoir une fréquence de coupure de $20Hz$ :
+$$C=  \frac{1}{2 \pi R_{H.P.}f_C}=995\mu F$$
+
+$1mF$ est une valeur de capacité qui n'est pas irréaliste, mais qui est à la limite de ce qui est réalisable. Un condensateur de $1mF$ se présente typiquement sous la forme d'un cylindre de 1 à 2cm de diamètre et de 4cm de hauteur; il s'agit donc d'un élément volumineux, peu adapté pour être inclus dans un appareil portable.\\
+Les concepteurs du NJM2113 ont donc imaginé une astuce pour éviter de devoir utiliser un tel condensateur :
+\begin{center}
+\includegraphics[width=10cm]{figures/AOPetage32}
+\end{center}
+
+\Question{0}
+{
+Vérifiez que : $V_{o1}=E-V_i$ et $V_{o2}=E+V_i$ tel que $V_o=V_{o2}-V_{o1}=2V_i$
+}
+{}
+
+En plaçant notre HP entre les sorties des deux amplis, on lui applique une tension purement alternative : puisque -les deux tensions de sortie ont la même composante continue, ces dernières s'annulent.\\
+Le circuit NJM2113 intègre presque toute cette solution :
+\begin{center}
+\includegraphics[width=10cm]{figures/NJM}
+\end{center}
+
+Le circuit intégré (partie encadrée) contient : les 2 amplis-op, les résistances de rétroaction du 2e ampli et un diviseur résistif pour créer la tension continue $E$ de $2,5V$.\\
+Nous devons ajouter à l'extérieur : les résistances de rétroaction du 1er ampli, le condensateur du filtre passe-haut et un condensateur de grande valeur en parallèle sur la tension continue de $2,5V$ ($C3$). Ce condensateur sert à stabiliser la tension continue (il forme un filtre passe-bas avec le diviseur résistif).\\
+Le schéma complet de notre ampli audio devient :
+\begin{center}
+\includegraphics[width=16cm]{figures/montage_complet_sans_bassesaigus.png}
+\end{center}
+
+\subsubsection{Ajout d'un contrôle basses/aigus}
+Nous avons à présent un amplificateur capable d'amplifier un signal dans la gamme audio avec un gain variable de $0$ à $160$, et de fournir la puissance nécessaire à notre HP, sans risque de le détruire.\\
+Nous pouvons encore améliorer notre montage en lui ajoutant un contrôle basses/aigus.\\
+Pour pouvoir amplifier différemment les basses et les aigus, il faut d'abord les séparer; cela se fait au moyen de deux filtres : un filtre passe-bas et un filtre passe-haut (filtres RC).\\
+Ensuite, on amplifie chacun des deux signaux obtenus à la sortie des filtres avec un étage amplificateur à gain variable entre $0$ et $1$.\\
+Finalement, on « remélange » les deux signaux avec un montage sommateur :
+\begin{center}
+\includegraphics[width=7cm]{figures/AOPsommateur}
+\end{center}
+
+Il faut choisir la position de ce contrôle dans notre montage; il y a priori 4 emplacements possibles : avant l'étage d'entrée, avant le 2e étage, avant l'étage de sortie et avant le HP.
+
+\Question{0}
+{
+Expliquez lesquelles de ces solutions sont bonnes et pourquoi.
+}
+{}
+
+On a choisi de placer notre égaliseur avant le 2e étage.
+Il reste à choisir la fréquence de coupure de nos deux filtres ; la première idée qui vient à l'esprit est de placer la fréquence de coupure au milieu de la bande audio, pour la diviser en deux parts égales.
+C'est une bonne idée, mais il y a une subtilité : l'oreille humaine possède une sensibilité logarithmique de la fréquence.
+
+Pour s'en persuader, il suffit de regarder les fréquences des notes de musique.
+Elles sont organisées en octaves; une octave comprend 12 tons, également espacés; ils correspondent aux 12 touches d'un piano :
+\begin{center}
+\includegraphics[width=10cm]{figures/AOPpiano}
+\end{center}
+
+Le tableau ci-dessous donne les fréquences des notes de musique (en $Hz$), pour 2 octaves consécutives :
+\begin{center}
+\includegraphics[width=16cm]{figures/AOPpianotable}
+\end{center}
+
+Le $La_4$ est la note sur laquelle on accorde les instruments; c'est aussi celle que vous entendez lorsque vous décrochez votre téléphone. On voit que d'une octave à l'autre, la fréquence de chaque note a été multipliée par $2$. La fréquence des notes de musique forme une suite géométrique de raison $\sqrt[12]{2}$.\\
+Les bonnes oreilles humaines entendent les notes depuis le $Do_0$ ($16,35Hz$) jusqu'au $Do_{10}$ ($16742Hz$), soit $10$ octaves.\\
+De ceci, on peut déduire que la fréquence séparant les basses des aigus doit être la moyenne géométrique (et non la moyenne arithmétique) des fréquences extrêmes de la gamme audio, soit le $Do_5$.
+
+Le schéma de notre contrôle basses/aigus est donc :
+\begin{center}
+\includegraphics[width=12cm]{figures/egaliseur_sommateur.png}
+\end{center}
+
+Pour expliquer son fonctionnement, prenons le bloc Filtre + volume des basses :
+\begin{center}
+\includegraphics[width=8cm]{figures/AOPfiltrebasse.png}
+\end{center}
+
+Il s'agit en fait de deux blocs mis en cascade : un filtre RC passe-bas et un ampli inverseur.
+Pour calculer la fréquence de coupure du filtre, il faut tenir compte de l'impédance d'entrée de l'ampli inverseur ($R_4$) :
+\begin{center}
+\includegraphics[width=5cm]{figures/filter.png}
+
+\begin{tabular}{|c||c||c|}\hline
+$R_3 = 2.7 k\Omega$ & $R_4 = 100 k\Omega$ & $C_1 = 100 nF$ \\ \hline
+\end{tabular}
+\end{center}
+
+La réponse en fréquence de ce filtre est $$H(j\omega) = \frac{C_1 // R_4}{R_3 + C_1 // R_4} = \frac{R_4}{R_4 + R_3 + j\omega C_1 R_3 R_4}$$
+On peut donc trouver sa réponse en fréquence : 
+
+\begin{tabular}{rl}
+	$|H(j\omega)|$ &= $\frac{1}{\sqrt{2}}$ \\
+	$\Leftrightarrow \frac{R_4}{\sqrt{(R_3 + R_4)^2 + (\omega C_1 R_3 R_4)^2}}$ &= $\frac{1}{\sqrt{2}}$ \\
+	$\Leftrightarrow 2 R_4^2$ &= $(R_3 + R_4)^2 + (\omega C_1 R_3 R_4)^2$ \\
+	$\Leftrightarrow \omega$ &= $\frac{\sqrt{2 R_4^2 - (R_3 + R_4)^2}}{C_1 R_3 R_4}$ \\
+	$\Leftrightarrow \omega$ &= 3600 \\
+	$\Leftrightarrow f$ &= 573 Hz
+\end{tabular}
 
 
+La fréquence de coupure est donc $573 Hz$.
+L'ampli inverseur nous permet d'avoir un gain variable entre $0$ et $1$ (avec un déphasage de $180^{o}$).
+Le mélange des deux signaux obtenus se fait en transformant le 2e étage en sommateur. On peut remarquer qu'il n'est pas nécessaire de placer une capacité en série avec l'entrée du signal des aigus dans le sommateur puisqu'il est déjà passé par un filtre passe-haut.
+
+\subsubsection{Schéma final}
+Le schéma final de notre amplificateur audio est donné à la page suivante.
 
 
-
-
-
-
-
-
-
-\newpage
-\section*{ANNEXE A: Schéma de montage}
-\label{montagetotal}
 \begin{minipage}{.7\textwidth}
 \begin{center}
-\includegraphics[width=23cm, angle=90]{decoupageenblocs.PNG}
+\includegraphics[width=26cm, angle=90]{figures/montage_complet.png}
 \end{center}
 \end{minipage}
 \begin{minipage}{.25\textwidth}
@@ -125,26 +345,129 @@ Cet étage est un amplificateur de puissance spécialement conçu pour des appli
 $R_1 = 1 k\Omega$ & $R_2 = 39 k\Omega$ & $R_3 = 2.7 k\Omega$ & $R_4 = 100 k\Omega$ & $R_5 = 100 k\Omega$ & $R_6 = 2.7 k\Omega$ \\ \hline
 $R_7 = 100 k\Omega$ & $R_8 = 100 k\Omega$ & $R_9 = 22 k\Omega$ & $R_{10} = 22 k\Omega$ & $R_{11} = 100 k\Omega$ & $R_{12} = 22 k\Omega$ \\ \hline
 $R_{13} = 22 k\Omega$ & $C_1 = 100 nF$ & $C_2 = 100 nF$ & $C_3 = 330 nF$ & $C_4 = 1 \mu F$ & \\ \hline
+\multicolumn{2}{|c|}{AOP 1 à 4 = TLV274IN} & \multicolumn{2}{|c|}{+Val = 5 V} & \multicolumn{2}{|c|}{-Val = -5 V} \\ \hline
 \end{tabular}
 }
 \end{center}
 \end{minipage}
 
 
-\section*{ANNEXE B: Datasheet TLE2061}
-\vspace{-0.1cm}
-\label{DatasheetTLE2061}
-\begin{center}
-\includegraphics[scale=0.8, page=2]{tle2061.pdf}
-\end{center}
+\section{Manipulation - Réalisation pratique}
+Vous allez à présent réaliser le montage. Voici quelques recommandations d'usage :
 
-\section*{ANNEXE C: Datasheet NJM2113}
-\vspace{-0.1cm}
-\label{DatasheetNJM2113}
-\begin{center}
-\includegraphics[scale=0.8, page=1]{NJM2113_E.pdf}
-\newpage
-\includegraphics[scale=0.9, page=3]{NJM2113_E.pdf}
-\end{center}
+\begin{itemize}
+	\item Assemblez \textbf{un étage à la fois} et testez-le individuellement avant de le connecter au reste du montage.
+	\item Vous avez deux packages \texttt{TLV274IN} pour un total de huit AOP, mais vous n'en avez besoin que de quatre. Aérez votre montage pour vous faciliter la tâche.
+	\item Exploitez intelligemment les lignes d'alimentation le long du protoboard afin de propager la masse et les +/- 5 V.
+\end{itemize}
+
+\Question{0}{
+	Commencez par réaliser le circuit permettant de générer une tension de $-5 \si{\volt}$ à l'aide du circuit \texttt{ADM660} et de deux condensateurs de $10 \si{\micro\farad}$.
+
+	\begin{astuce}
+		Référez-vous à la fiche technique, vous devez réaliser le montage «~\textit{Voltage Inverter Configuration (ADM660)}~».
+	\end{astuce}
+
+}{
+	% \begin{center}
+	% 	\begin{circuitikz}[scale=1]
+	% 		\draw 
+	% 		(0,0) node[dipchip,num pins=8,external pins width=0.1, scale=1.5](C){\small{\texttt{ADM660}}}
+	% 		% (C.pin 1) -- ++(-0.5,0) to [R] ++(0,-1.5) node[ground]{}
+	% 		(C.pin 3) to [short] ($(C.pin 3)-(0.5,0)$) node[tlground, rotate=-90]{}
+	% 		(C.pin 2) -- ++(-2,0) to [C, l_=$10\si{\micro\farad}$] ($(C.pin 4)-(2,0)$) to [short] (C.pin 4)
+	% 		(C.pin 8) -- ++(1,0) node[rground, yscale=-1](alim){}
+	% 		(alim) ++(0,0.6) node{\texttt{5V}}
+	% 		(C.pin 5) -- ++(1,0) ++(0.45,0.04)node{${\triangleright}$ \texttt{-5V}}
+	% 		(C.pin 5) ++(0.5,0) node[circle,fill,inner sep=1.5pt] () {}
+	% 		(C.pin 5) ++(0.5,0) to [C] ++(0,-1) node [tlground] {}
+	% 		;
+	% 	\end{circuitikz}
+	% 	\end{center}
+}
+
+Pour les prochaines questions, utilisez une sinusoïde issue du générateur pour tester vos montages.
+\Question{0}
+{
+	Réalisez l'étage d'entrée de l'amplificateur et vérifiez que vous obtenez bien un gain de 40.
+	\begin{astuce}
+		Sur le \texttt{TLV274IN}, branchez la patte 4 à l'alimentation de 5 V et la patte 11 à celle de -5 V.
+	\end{astuce}
+}
+{}
+
+\Question{0}
+{
+	Réalisez l'étage « filtre et volume des basses » \textbf{seul} et vérifiez que vous obtenez un gain compris entre -1 et 0 à 100 Hz et que les fréquences supérieures à 605 Hz sont bien atténuées.
+
+	\begin{astuce}
+		Pour utiliser le potentiomètre, connectez la patte du milieu et l'une des deux autres.
+	\end{astuce}
+
+	S'il fonctionne correctement, connectez la sortie de l'étage d'entrée à la résistance $R_3$.
+}
+{}
+
+\Question{0}
+{
+	Réalisez l'étage « filtre et volume des aigus » \textbf{seul} et vérifiez que vous obtenez un gain compris entre -1 et 0 à 1 kHz et que les fréquences inférieures à 605 Hz sont bien atténuées.
+
+	S'il fonctionne correctement, connectez la sortie de l'étage d'entrée au condensateur $C_2$.
+}
+{}
+
+\Question{0}
+{
+	Réalisez l'étage « volume général » \textbf{seul} en omettant $R_{10}$ dans un premier temps. Vérifiez que vous obtenez un gain compris entre -4 et 0.
+
+	S'il fonctionne correctement, connectez la sortie de l'étage de contrôle des basses à $R_9$. Ajoutez ensuite la résistance $R_{10}$ et connectez-y la sortie de l'étage de contrôle des aigus.
+}
+{}
+
+\Question{0}
+{
+	Réalisez l'étage de sortie \textbf{seul}.
+	\begin{astuce}
+		Certains éléments sont déjà à l'intérieur du \texttt{NJM2113D}, vous ne devez ajouter que $C_3$, $C_4$, $R_{12}$ et $R_{13}$.
+	\end{astuce}
+
+	\begin{astuce}
+		Aidez-vous de la fiche technique pour déterminer la fonction de chaque pin :
+		\begin{center}
+			\begin{tabular}{ccc}
+				Patte & Nom & Connectée à ... \\\toprule
+				1 & CD & Inutilisée \\
+				2 & Vref & $C_4$ \\
+				3 & +Vin, in+ & $C_4$ \\
+				4 & -Vin, in- & $R_{12}$ \\
+				5 & Vout1, vo1 & $R_{13}$ \\
+				6 & V+, vdd & +5 V \\
+				7 & GND & Masse \\
+				8 & Vout2, vo2 & - \\\bottomrule
+			\end{tabular}
+		\end{center}
+	\end{astuce}
+
+	Observez que $V_{o1}$ et $V_{o2}$ simultanément sur les deux canaux de l'oscilloscope et remarquez qu'ils ont bien la même composante continue et des composantes alternatives en opposition de phase.\\
+	\textbf{ATTENTION}, vous ne pouvez pas observer $V_{o2} - V_{o1}$ sur un seul canal de l'oscilloscope. Pourquoi ?
+}
+{}
+
+\Question{0}
+{
+Mettez les contrôles des basses et des aigus au maximum (position neutre), et relevez la fonction de transfert de votre ampli en utilisant le générateur de fonction comme source.\\
+Le cahier des charges est-il respecté ?
+}
+{}
+
+\Question{0}
+{
+	Une fois que vous avez confirmé que le montage fonctionne à l'aide du générateur et de l'oscilloscope, remplacez ces appareils par des connecteurs Jack.
+
+	$\Rightarrow$ En entrée, connectez \texttt{RING2} à la masse et \texttt{RING1} à l'entrée de votre montage.
+
+	$\Rightarrow$ En sortie, connectez \texttt{RING2} à la masse, \texttt{RING1} à vo1 et \texttt{TIP} à vo2.
+}
+{}
 
 \endinput
