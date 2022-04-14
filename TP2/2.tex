@@ -69,7 +69,7 @@ Sur les tracés suivants, quel est le gain naturel et en décibel pour 10~Hz, 1~
   \begin{tabular}{cccc}
   Relevé & 10 Hz & 1 kHz & 10 kHz \\ \hline
   1 & 20 dB/10 & 0 dB/1 & -20 dB/0.1 \\
-  2 & -12 dB/4 & -10 dB/$10^{1/2}$ & 8 dB/2.5 \\
+  2 & -12 dB/0.25 & -10 dB/0.32 & 8 dB/2.5 \\
   3 & 0 dB/1 & 20 dB/10 & 20 dB/10 \\
   \end{tabular}
   \end{center}
@@ -94,8 +94,8 @@ Pour ces différents signaux d'entrée, quelle sera l'expression du signal de so
 {
   \begin{enumerate}
     \item 45 dB et -90° : $V_{out}(t) = 177 V \times cos(100\frac{rad}{s}t - \frac{\pi}{2})$
-    \item -50 dB et -145° : $V_{out}(t) = 3 mV\times cos(10^4\frac{rad}{s}t - 145°)$
-    \item 0 dB et -170° : $V_{out}(t) = 2 V\times cos(1000\frac{rad}{s}t - 140°)$
+    \item -50 dB et -145° : $V_{out}(t) = 16 mV\times cos(10^4\frac{rad}{s}t - \frac{145}{180}\pi)$
+    \item 0 dB et -170° : $V_{out}(t) = 2 V\times cos(1000\frac{rad}{s}t - \frac{\pi}{6} - \frac{170}{180}\pi)$
   \end{enumerate}
 }
 
@@ -129,7 +129,7 @@ Nous pouvons immédiatement en déduire l'expression de sa réponse en fréquenc
 Quelle est l'expression de l'impédance du condensateur, de l'inductance et de la résistance ?
 }
 {
-  $Z_R = R$, $R_C = \frac{1}{j\omega C}$, $R_L = j\omega L$
+  $Z_R = R$, $Z_C = \frac{1}{j\omega C}$, $Z_L = j\omega L$
 }
 
 \Question{0}
@@ -390,7 +390,7 @@ Réalisez une version avec un condensateur et une autre avec une inductance.
     \item Version RC~: pour un passe-bas, la sortie doit être sur le condensateur.
     La fréquence de coupure est $ f_c = 1/2\pi RC = 1 kHz$. Nous avons un degré de liberté, posons par exemple une résistance de $1 k\Omega$, ce qui implique l'utilisation d'un condensateur de 159 nF.
     \item Version RL~: pour un passe-bas, la sortie doit être sur la résistance.
-    La fréquence de coupure est $ f_c = R/2\pi L = 1 kHz$. Nous avons un degré de liberté, posons par exemple une résistance de $1 k\Omega$, ce qui implique l'utilisation d'un condensateur de 318 mH.
+    La fréquence de coupure est $ f_c = R/2\pi L = 1 kHz$. Nous avons un degré de liberté, posons par exemple une résistance de $1 k\Omega$, ce qui implique l'utilisation d'une inductance de 159 mH.
   \end{itemize}
 }
 
@@ -577,8 +577,8 @@ Quelle est l'expression de $V_{out}$ en fonction de $V_{in}$ ?
 Déduisez-en l'expression du gain du montage complet.
 }
 {
-  $V_{out} = A \cdot \frac{Z_{ch}}{Z_{out} + Z_{ch}} \cdot \frac{Z_S}{Z_S + Z_{in}} \cdot V_{in}$.
-  Le gain est donc $A \cdot \frac{Z_{ch}}{Z_{out} + Z_{ch}} \cdot \frac{Z_S}{Z_S + Z_{in}}$.
+  $V_{out} = A \cdot \frac{Z_{ch}}{Z_{out} + Z_{ch}} \cdot \frac{Z_{in}}{Z_S + Z_{in}} \cdot V_{in}$.
+  Le gain est donc $A \cdot \frac{Z_{ch}}{Z_{out} + Z_{ch}} \cdot \frac{Z_{in}}{Z_S + Z_{in}}$.
 }
 
 \Question{0}
